@@ -5,17 +5,8 @@
  */
 
 #include <string.h>
-<<<<<<< HEAD
-#include "binary_tree.h"
-
-void memerr() {
-    fprintf(stderr, "oh snap ! cannot malloc ..");
-    perror("malloc");
-    exit(EXIT_FAILURE);
-}
-=======
 #include "orderedSet.h"
->>>>>>> cb2e6c0464555b820411e793d75eceecc84f5c1a
+#include "binary_tree.h"
 
 int main() {
     ordSet *s1 = initOrderedSet();

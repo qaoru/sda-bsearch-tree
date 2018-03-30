@@ -44,6 +44,9 @@ int contains(ordSet *s, int x) {
   * Retourne :
   *     - le maillon après lequel l'élément doit être inséré
   *     - NULL si l'ensemble contient déjà l'élément
+  * Attention :
+  *     - si le maillon renvoyé correspond au premier, il faut tester
+  *       si il faut insérer avant ou après
   */
 
 ordSet *getInsertPosition(ordSet *s, int x) {
@@ -84,7 +87,7 @@ ordSet *insertValue(ordSet *s, int x) {
     }
 
     // Cas : insérer en tête
-    if(before == start) {
+    if(before->pos > x) {
         newElt->next = before;
         return newElt;
     }
@@ -106,19 +109,38 @@ void printOrderedSet(ordSet *s) {
     printf(" %d", s->pos);
 }
 
+
+ordSet *insertValueDumb(ordSet *s, int x) {
+    ordSet *newElt = initOrderedSet();
+    if((newElt = malloc(sizeof(struct str_set))) == NULL) {
+        memerr();
+    }
+    newElt->pos = x;
+    if(s == NULL) {
+        newElt->next = NULL;
+        return newElt;
+    }
+    newElt->next = s->next;
+    s->next = newElt;
+    return s;
+}
+
 ordSet *copyOrderedSet(ordSet *s) {
     ordSet *res = initOrderedSet();
+    ordSet **tmp = &res;
     while(s != NULL) {
-        insertValue(res, s->pos);
+        *tmp = insertValueDumb(*tmp,s->pos);
+        tmp = &(*tmp)->next;
         s = s->next;
     }
     return res;
 }
 
 ordSet *intersect(ordSet *s1, ordSet *s2) {
-    ordSet *res = copyOrderedSet(s1);
+    ordSet *res = initOrderedSet();
+    res = copyOrderedSet(s1);
     while(s2 != NULL) {
-        insertValue(res, s2->pos);
+        res = insertValue(res, s2->pos);
         s2 = s2->next;
     }
     return res;

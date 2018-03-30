@@ -1,6 +1,7 @@
 #include "orderedSet.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX_WORD_SIZE 256;
 

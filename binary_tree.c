@@ -36,8 +36,40 @@ void freeBinarySearchTree(bTree* b){
 /*
  * Fonction qui renvoie le nombre de mots différents dans un arbre
  */
+ // !!!!! Fonction très probablement beugé !!!!
 int getNumberString(bTree *b){
-    //à implémenter
+    static int i=0;
+    static int size_tab = 10;
+    if(i==0){
+        if((static char** mots_arbre = malloc(size_tab*sizeof(char*)))==NULL){
+            perror("malloc");
+            exit(EXIT_FAILURE);
+        }
+    }
+    if(i==(size_tab-1)){
+        if((*mots_arbre = realloc(*mots_arbre,(size_tab+10)*sizeof(char*)))==NULL){
+            perror("realloc");
+            exit(EXIT_FAILURE);
+        }
+        size_tab+=10;
+    }
+    int cpt;
+    int counted=0;
+    for(cpt=0;cpt<i;cpt++){
+        if(strcmp(mots_arbre[cpt],b->c.mot)!=0){
+            counted=1;
+        }
+    }
+    if(counted==1{
+        getNumberString(b->droite);
+        getNumberString(b->gauche);
+    }
+    else{
+        strcpy(mots_arbre[i++],b->c.mot);
+        getNumberString(b->droite);
+        getNumberString(b->gauche);
+    }
+    return (i-1);
 }
 
 int getTotalNumberString(bTree *b){

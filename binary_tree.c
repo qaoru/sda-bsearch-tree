@@ -4,19 +4,21 @@
  * Fonction qui créé un nouvel arbre binaire
  */
 bTree* initBinarySearchTree(){
-    if((bTree* newt = malloc(sizeof(struct s_bTree)))==NULL){
+    bTree* newt=malloc(sizeof(struct s_bTree));
+    if(newt==NULL){
         perror("malloc");
         exit(EXIT_FAILURE);
     }
     newt->droite = NULL;
     newt->gauche = NULL;
     Couple newc;
-    if(news.mot = malloc(MAX_WORD_SIZE))==NULL){
+    newc.mot = malloc(MAX_WORD_SIZE);
+    if(newc.mot==NULL){
         perror("malloc");
         exit(EXIT_FAILURE);
     }
-    news.positions = initOrderedSet();
-    new->c = newc;
+    newc.positions = initOrderedSet();
+    newt->c = newc;
     return newt;
 }
 
@@ -39,19 +41,15 @@ void freeBinarySearchTree(bTree* b){
  // !!!!! Fonction très probablement beugé !!!!
 int getNumberString(bTree *b){
     static int i=0;
-    static int size_tab = 10;
-    if(i==0){
-        if((static char** mots_arbre = malloc(size_tab*sizeof(char*)))==NULL){
-            perror("malloc");
-            exit(EXIT_FAILURE);
-        }
-    }
+    static int size_tab=TAB_SIZE;
+    static char* mots_arbre[TAB_SIZE];
     if(i==(size_tab-1)){
-        if((*mots_arbre = realloc(*mots_arbre,(size_tab+10)*sizeof(char*)))==NULL){
+        *mots_arbre = realloc(*mots_arbre,(size_tab+TAB_SIZE)*sizeof(char*));
+        if(*mots_arbre==NULL){
             perror("realloc");
             exit(EXIT_FAILURE);
         }
-        size_tab+=10;
+        size_tab+=TAB_SIZE;
     }
     int cpt;
     int counted=0;
@@ -60,7 +58,7 @@ int getNumberString(bTree *b){
             counted=1;
         }
     }
-    if(counted==1{
+    if(counted==1){
         getNumberString(b->droite);
         getNumberString(b->gauche);
     }
@@ -73,10 +71,15 @@ int getNumberString(bTree *b){
 }
 
 int getTotalNumberString(bTree *b){
+    (void)b;
+    return 0;
     //à implémenter
 }
 
 bTree* insert(Couple d, bTree *b){
+    (void)d;
+    (void)b;
+    return NULL;
     //à implémenter
 }
 
@@ -85,9 +88,13 @@ bTree* insert(Couple d, bTree *b){
  */
 
 ordSet* find(char* mot, bTree *b){
+    (void)mot;
+    (void)b;
+    return NULL;
     // à implémenter
 }
 
 void printBinarySearchTree(bTree *b){
+    (void)b;
     //à implémenter
 }

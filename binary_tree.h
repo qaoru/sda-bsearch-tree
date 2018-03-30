@@ -21,10 +21,12 @@ typedef struct s_bTree{
 
 bTree* initBinarySearchTree();
 void freeBinarySearchTree(bTree* b);
+void addNodeLeft(bTree* b, char* word, ordSet* l);
+void addNodeRight(bTree* b, char* word, ordSet* l);
 int getNumberString(bTree *b);
 int getTotalNumberString(bTree *b);
 bTree* insert(Couple d, bTree *b);
 // Ajouter cooccurences ici
 ordSet* find(char* mot, bTree *b);
-void printBinarySearchTree(bTree *b);
+void printBinarySearchTree(bTree *b, int prof);
 #endif

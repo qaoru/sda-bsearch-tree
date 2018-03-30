@@ -27,7 +27,7 @@ bTree* initBinarySearchTree(){
  */
 void freeBinarySearchTree(bTree* b){
     if(b==NULL){
-        exit(EXIT_SUCCESS);
+        return;
     }
     freeBinarySearchTree(b->droite);
     freeBinarySearchTree(b->gauche);
@@ -36,11 +36,50 @@ void freeBinarySearchTree(bTree* b){
 }
 
 /*
+ * Fonction qui ajoute un noued à gauche de l'enfantb
+ */
+void addNodeLeft(bTree* b, char* word, ordSet* l){
+    bTree* node=initBinarySearchTree();
+    Couple addc;
+    addc.mot=malloc(MAX_WORD_SIZE);
+    if(addc.mot==NULL){
+        perror("malloc");
+        exit(EXIT_FAILURE);
+    }
+    strcpy(addc.mot,word);
+    addc.positions=l;
+    strcpy(node->c.mot,addc.mot);
+    node->c.positions=addc.positions;
+    b->gauche=node;
+    free(addc.mot);
+}
+
+/*
+ * Fonction qui ajoute un noeud à droite de l'enfant b
+ */
+void addNodeRight(bTree* b, char* word, ordSet* l){
+    bTree* node=initBinarySearchTree();
+    Couple addc;
+    addc.mot=malloc(MAX_WORD_SIZE);
+    if(addc.mot==NULL){
+        perror("malloc");
+        exit(EXIT_FAILURE);
+    }
+    strcpy(addc.mot,word);
+    addc.positions=l;
+    strcpy(node->c.mot,addc.mot);
+    node->c.positions=addc.positions;
+    b->droite=node;
+    free(addc.mot);
+}
+
+/*
  * Fonction qui renvoie le nombre de mots différents dans un arbre
  */
- // !!!!! Fonction très probablement beugé !!!!
+ // !!!!! Fonction beugé !!!!
 int getNumberString(bTree *b){
-    static int i=0;
+    (void)b;
+    /*static int i=0;
     static int size_tab=TAB_SIZE;
     static char* mots_arbre[TAB_SIZE];
     if(i==(size_tab-1)){
@@ -67,7 +106,8 @@ int getNumberString(bTree *b){
         getNumberString(b->droite);
         getNumberString(b->gauche);
     }
-    return (i-1);
+    return (i-1);*/
+    return 0;
 }
 
 int getTotalNumberString(bTree *b){
@@ -94,7 +134,21 @@ ordSet* find(char* mot, bTree *b){
     // à implémenter
 }
 
-void printBinarySearchTree(bTree *b){
-    (void)b;
-    //à implémenter
+void printBinarySearchTree(bTree *b, int prof){
+    if(b==NULL){
+        return;
+    }
+    else{
+        int i;
+        printf("|");
+        for(i=0;i<prof-1;i++){
+            printf(" ");
+        }
+        printf("|->%s ",b->c.mot);
+        printf("(");
+        printOrderedSet(b->c.positions);
+        printf(")\n");
+        printBinarySearchTree(b->droite,prof+1);
+        printBinarySearchTree(b->gauche,prof+1);
+    }
 }

@@ -105,3 +105,21 @@ void printOrderedSet(ordSet *s) {
     }
     printf(" %d\n", s->pos);
 }
+
+ordSet *copyOrderedSet(ordSet *s) {
+    ordSet *res = initOrderedSet();
+    while(s != NULL) {
+        insertValue(res, s->pos);
+        s = s->next;
+    }
+    return res;
+}
+
+ordSet *intersect(ordSet *s1, ordSet *s2) {
+    ordSet *res = copyOrderedSet(s1);
+    while(s2 != NULL) {
+        insertValue(res, s2->pos);
+        s2 = s2->next;
+    }
+    return res;
+}

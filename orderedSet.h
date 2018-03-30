@@ -23,4 +23,6 @@ int contains(ordSet *s, int x);
 ordSet *getInsertPosition(ordSet *s, int x);
 ordSet *insertValue(ordSet *s, int x);
 void printOrderedSet(ordSet *s);
+ordSet *copyOrderedSet(ordSet *s);
+ordSet *intersect(ordSet *s1, ordSet *s2);
 #endif

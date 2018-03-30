@@ -1,4 +1,8 @@
 #include "orderedSet.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_WORD_SIZE 256;
 
 typedef struct s_bTree{
     Couple c;

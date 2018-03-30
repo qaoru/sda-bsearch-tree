@@ -14,7 +14,7 @@ void freeOrderedSet(ordSet *s) {
     ordSet * tmp;
     while(s != NULL) {
         tmp = s;
-        s = tmp->next;  
+        s = tmp->next;
         free(tmp);
     }
 }
@@ -82,13 +82,13 @@ ordSet *insertValue(ordSet *s, int x) {
         newElt->next = NULL;
         return newElt;
     }
-    
+
     // Cas : insérer en tête
     if(before == start) {
         newElt->next = before;
         return newElt;
     }
-    
+
     newElt->next = before->next;
     before->next = newElt;
     return start;
@@ -103,7 +103,7 @@ void printOrderedSet(ordSet *s) {
         printf(" %d |", s->pos);
         s = s->next;
     }
-    printf(" %d\n", s->pos);
+    printf(" %d", s->pos);
 }
 
 ordSet *copyOrderedSet(ordSet *s) {

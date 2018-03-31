@@ -9,8 +9,8 @@
 #include "binary_tree.h"
 
 int main() {
-    // Tests orderedSet 
-    
+    // Tests orderedSet
+
     ordSet *s1 = initOrderedSet();
     s1 = insertValue(s1, 2);
     s1 = insertValue(s1, 1);
@@ -21,7 +21,7 @@ int main() {
     printf("Nb d'elt : %d\n", getNumberElt(s1));
     printf("s1 contient 2 : %d\n", contains(s1, 2));
     printf("s1 contient 3 : %d\n", contains(s1, 3));
-    
+
 
     ordSet *s2 = initOrderedSet();
     printOrderedSet(s2);
@@ -30,7 +30,7 @@ int main() {
     s2 = insertValue(s2, 2);
     printOrderedSet(s2);
     printf("\n");
-    
+
     ordSet *s3 = intersect(s1, s2);
     printf("s1 : ");
     printOrderedSet(s1);
@@ -47,13 +47,13 @@ int main() {
 
 
     // Tests binary_tree
-    
+
     bTree* t1 = initBinarySearchTree();
     strcpy(t1->c.mot,"lili");
     t1->c.positions=s1;
-    addNodeLeft(t1,"lala",s1);
-    addNodeRight(t1,"lolo",s1),
-    //printf("%d\n",getNumberString(t1));
+    addNodeLeft(t1,"lili",s1);
+    addNodeRight(t1,"lolo",s1);
+    printf("%d\n",getNumberString(t1));
     printBinarySearchTree(t1,1);
     freeBinarySearchTree(t1);
 

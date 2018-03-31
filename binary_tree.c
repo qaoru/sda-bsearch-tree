@@ -74,40 +74,58 @@ void addNodeRight(bTree* b, char* word, ordSet* l){
 }
 
 /*
- * Fonction qui renvoie le nombre de mots différents dans un arbre
+ * Fonction qui modifie words et count par effet de bord
+ * Met dans word, les mots de l'arbre sans répétition
+ * Met dans count le nombre de mot différent dans l'arbre
  */
- // !!!!! Fonction beugé !!!!
-int getNumberString(bTree *b){
-    (void)b;
-    /*static int i=0;
-    static int size_tab=TAB_SIZE;
-    static char* mots_arbre[TAB_SIZE];
-    if(i==(size_tab-1)){
-        *mots_arbre = realloc(*mots_arbre,(size_tab+TAB_SIZE)*sizeof(char*));
-        if(*mots_arbre==NULL){
-            perror("realloc");
-            exit(EXIT_FAILURE);
-        }
-        size_tab+=TAB_SIZE;
-    }
+void getNumberStringAux(bTree *b, char** words, int* count){
+    static int i=0;
     int cpt;
-    int counted=0;
-    for(cpt=0;cpt<i;cpt++){
-        if(strcmp(mots_arbre[cpt],b->c.mot)!=0){
-            counted=1;
+    int in=0;
+    if(b!=NULL){
+        if(i==0){
+            strcpy(words[i++],b->c.mot);
+            (*count)++;
+            getNumberStringAux(b->droite,words,count);
+            getNumberStringAux(b->gauche,words,count);
+        }
+        else{
+            for(cpt=0;cpt<i;cpt++){
+                if(strcmp(words[cpt],b->c.mot)==0){
+                    in=1;
+                }
+            }
+            if(in==1){
+                getNumberStringAux(b->droite,words,count);
+                getNumberStringAux(b->gauche,words,count);
+            }
+            else{
+                strcpy(words[i++],b->c.mot);
+                (*count)++;
+                getNumberStringAux(b->droite,words,count);
+                getNumberStringAux(b->gauche,words,count);
+            }
         }
     }
-    if(counted==1){
-        getNumberString(b->droite);
-        getNumberString(b->gauche);
+}
+
+/*
+ * Fonction qui renvoie le nombre de mots différents dans un arbre
+ * ATTENTION: pas généralisé pour une chaine de caractère de taille aléatoire
+ * (ici 50 caractères au max) et pour un nombre de mots aléatoire (ici TAB_SIZE
+ * mots).
+ */
+int getNumberString(bTree *b){
+    char* words[TAB_SIZE];
+    for(int i=0;i<TAB_SIZE;i++){
+        words[i]=malloc(50*sizeof(char));
     }
-    else{
-        strcpy(mots_arbre[i++],b->c.mot);
-        getNumberString(b->droite);
-        getNumberString(b->gauche);
+    int count=0;
+    getNumberStringAux(b,words,&count);
+    for(int i=0;i<TAB_SIZE;i++){
+        free(words[i]);
     }
-    return (i-1);*/
-    return 0;
+    return count;
 }
 
 int getTotalNumberString(bTree *b){

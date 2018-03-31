@@ -112,5 +112,5 @@ void printOrderedSet(ordSet c);
  * \param c2 un ensemble ordonné
  * \return un nouvel ensemble
  */
-ordSetElt *intersect( ordSetElt *s1,  ordSetElt *s2);
+ordSet intersect(ordSet c1, ordSet c2);
 #endif

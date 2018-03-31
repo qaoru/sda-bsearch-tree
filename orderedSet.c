@@ -38,7 +38,7 @@ void printNbElt(ordSet c) {
 }
 
 int contains(ordSet c, int x) {
-     ordSetElt *s = c.start;
+    ordSetElt *s = c.start;
     while(s != NULL) {
         if(s->pos == x) {
             return 1;
@@ -56,20 +56,8 @@ void printContains(ordSet c, int x) {
     }
 }
 
-/**
-  * fonction getInsertPosition
-  * Pré-condition : l'ensemble s n'est pas vide
-  * Retourne :
-  *     - le maillon après lequel l'élément doit être inséré
-  *     - NULL si l'ensemble contient déjà l'élément
-  * Attention :
-  *     - si le maillon renvoyé correspond au premier, il faut tester
-  *       si il faut insérer avant ou après
-  */
-
- ordSetElt *getInsertPosition( ordSetElt *s, int x) {
-    printf("insert passage pour x = %d\n", x);
-     ordSetElt * old = s;
+ordSetElt *getInsertPosition(ordSetElt *s, int x) {
+    ordSetElt * old = s;
     while(s != NULL) {
         if(s->pos == x) {
             return NULL;
@@ -85,14 +73,14 @@ void printContains(ordSet c, int x) {
 }
 
 void insertValue(ordSet *s, int x) {
-     ordSetElt *before;
+    ordSetElt *before;
     if(s->start != NULL && x < s->last->pos) {
         before = getInsertPosition(s->start, x);
         if(before == NULL) {    //s contient déjà x
             return;
         }
     }
-     ordSetElt *newElt = NULL;
+    ordSetElt *newElt = NULL;
     if((newElt = malloc(sizeof(struct str_set))) == NULL) {
         memerr();
     }
@@ -127,7 +115,7 @@ void insertValue(ordSet *s, int x) {
 }
 
 void printOrderedSet(ordSet c) {
-     ordSetElt *s = c.start;
+    ordSetElt *s = c.start;
     if(s == NULL) {
         printf("L'ensemble est vide.\n");
         return;
@@ -150,13 +138,32 @@ ordSet copyOrderedSet(ordSet c) {
     }
     return res;
 }
-/*
-ordSetElt *intersect(ordSetElt *s1, ordSetElt *s2) {
-    ordSetElt *res = NULL;
-    res = copyOrderedSet(s1);
-    while(s2 != NULL) {
-        res = insertValue(res, s2->pos);
-        s2 = s2->next;
+
+ordSet intersect(ordSet c1, ordSet c2) {
+    ordSet res = initOrderedSet();
+
+    // Cas : les 2 ensembles sont vides
+    if(c1.start == NULL || c2.start == NULL) {
+        return res;
     }
-    return res;
-}*/
+
+    // Cas : l'un des ensemble est strictement plus grand que l'autre
+    if(c1.last->pos < c2.start->pos || c1.start->pos > c2.last->pos) {
+        return res;
+    }
+
+    ordSetElt *e1 = c1.start;
+    ordSetElt *e2 = c2.start;
+    while(e1->next != NULL && e2->next != NULL) {
+        if(e1->pos == e2->pos) {
+            insertValue(&res, e1->pos);
+            e1 = e1->next;
+            e2 = e2->next;
+        } else if(e1->pos < e2->pos) {
+            e1 = e1->next;
+        } else {
+            e2 = e2->next;
+        }
+    }
+    return res;    
+}

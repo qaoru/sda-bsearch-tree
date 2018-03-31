@@ -9,7 +9,9 @@
 #include "binary_tree.h"
 
 int main() {
+
     // Tests orderedSet
+    
     ordSet s1 = initOrderedSet();
     insertValue(&s1, 1);
     insertValue(&s1, 4);
@@ -27,9 +29,19 @@ int main() {
     insertValue(&s2, 2);
     insertValue(&s2, 7);
     insertValue(&s2, 42);
+    printOrderedSet(s2);
+    printf("\n");
+    ordSet s3 = intersect(s1, s2);
+    printf("Intersection :\n");
+    printOrderedSet(s3);
+    printf("\ns1 : \n");
+    printOrderedSet(s1);
+    printf("\ns2 : \n");
+    printOrderedSet(s2);
+    printf("\n");
 
     /******************************/
-
+    printf("\n\n ===================$$$$$$===================\n\n");
 
     // Tests binary_tree
     
@@ -45,6 +57,6 @@ int main() {
 
     freeOrderedSet(&s1);
     freeOrderedSet(&s2);
-    //freeOrderedSet(s3);
+    freeOrderedSet(&s3);
     return 0;
 }

@@ -6,20 +6,24 @@ void memerr() {
     exit(EXIT_FAILURE);
 }
 
-ordSet *initOrderedSet() {
-    return NULL;
+ordCouple initOrderedSet() {
+    ordCouple res;
+    res.start = NULL;
+    res.last = NULL;
+    return res;
 }
 
-void freeOrderedSet(ordSet *s) {
+void freeOrderedSet(ordCouple *s) {
     ordSet * tmp;
-    while(s != NULL) {
-        tmp = s;
-        s = tmp->next;
+    while(s->start != NULL) {
+        tmp = s->start;
+        s->start = tmp->next;
         free(tmp);
     }
 }
 
-int getNumberElt(ordSet *s) {
+int getNumberElt(ordCouple c) {
+    ordSet *s = c.start;
     int cnt = 0;
     while(s != NULL) {
         cnt++;
@@ -28,7 +32,13 @@ int getNumberElt(ordSet *s) {
     return cnt;
 }
 
-int contains(ordSet *s, int x) {
+void printNbElt(ordCouple c) {
+    printf("L'ensemble contient %d éléments.\n", getNumberElt(c));
+    printf("Le premier élément est %d et le dernier est %d.\n", c.start->pos, c.last->pos);
+}
+
+int contains(ordCouple c, int x) {
+    ordSet *s = c.start;
     while(s != NULL) {
         if(s->pos == x) {
             return 1;
@@ -36,6 +46,14 @@ int contains(ordSet *s, int x) {
         s = s->next;
     }
     return 0;
+}
+
+void printContains(ordCouple c, int x) {
+    if(contains(c, x)) {
+        printf("L'ensemble contient %d.\n", x);
+    } else {
+        printf("L'ensemble ne contient pas %d.\n", x);
+    }
 }
 
 /**
@@ -50,6 +68,7 @@ int contains(ordSet *s, int x) {
   */
 
 ordSet *getInsertPosition(ordSet *s, int x) {
+    printf("insert passage pour x = %d\n", x);
     ordSet * old = s;
     while(s != NULL) {
         if(s->pos == x) {
@@ -65,39 +84,50 @@ ordSet *getInsertPosition(ordSet *s, int x) {
     return old;
 }
 
-ordSet *insertValue(ordSet *s, int x) {
+void insertValue(ordCouple *s, int x) {
     ordSet *before;
-    if(s != NULL) {
-        before = getInsertPosition(s, x);
+    if(s->start != NULL && x < s->last->pos) {
+        before = getInsertPosition(s->start, x);
         if(before == NULL) {    //s contient déjà x
-            return s;
+            return;
         }
     }
-    ordSet *start = s;
-    ordSet *newElt = initOrderedSet();
+    ordSet *newElt = NULL;
     if((newElt = malloc(sizeof(struct str_set))) == NULL) {
         memerr();
     }
     newElt->pos = x;
 
     // Cas : s est vide
-    if(s == NULL) {
+    if(s->start == NULL) {
         newElt->next = NULL;
-        return newElt;
+        s->start = newElt;
+        s->last = newElt;
+        return;
     }
 
+    // Cas : insérer en fin
+    if(s->last->pos < x) {
+        newElt->next = NULL;
+        s->last->next = newElt;
+        s->last = newElt;
+        return;
+    }
+    
     // Cas : insérer en tête
     if(before->pos > x) {
         newElt->next = before;
-        return newElt;
+        s->start = newElt;
+        return;
     }
 
     newElt->next = before->next;
     before->next = newElt;
-    return start;
+    //return start;
 }
 
-void printOrderedSet(ordSet *s) {
+void printOrderedSet(ordCouple c) {
+    ordSet *s = c.start;
     if(s == NULL) {
         printf("L'ensemble est vide.\n");
         return;
@@ -110,38 +140,23 @@ void printOrderedSet(ordSet *s) {
 }
 
 
-ordSet *insertValueDumb(ordSet *s, int x) {
-    ordSet *newElt = initOrderedSet();
-    if((newElt = malloc(sizeof(struct str_set))) == NULL) {
-        memerr();
-    }
-    newElt->pos = x;
-    if(s == NULL) {
-        newElt->next = NULL;
-        return newElt;
-    }
-    newElt->next = s->next;
-    s->next = newElt;
-    return s;
-}
-
-ordSet *copyOrderedSet(ordSet *s) {
-    ordSet *res = initOrderedSet();
-    ordSet **tmp = &res;
+ordCouple copyOrderedSet(ordCouple c) {
+    ordCouple res = initOrderedSet();
+    ordSet *s = c.start;
+    ordCouple * tmp = &res;
     while(s != NULL) {
-        *tmp = insertValueDumb(*tmp,s->pos);
-        tmp = &(*tmp)->next;
+        insertValue(tmp,s->pos);
         s = s->next;
     }
     return res;
 }
-
+/*
 ordSet *intersect(ordSet *s1, ordSet *s2) {
-    ordSet *res = initOrderedSet();
+    ordSet *res = NULL;
     res = copyOrderedSet(s1);
     while(s2 != NULL) {
         res = insertValue(res, s2->pos);
         s2 = s2->next;
     }
     return res;
-}
+}*/

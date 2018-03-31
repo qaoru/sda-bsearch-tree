@@ -20,26 +20,33 @@ typedef struct str_set {
     struct str_set * next;
 } ordSet;
 
+typedef struct str_ordCouple {
+    ordSet * start;
+    ordSet * last;
+} ordCouple;
+
 void memerr();
 
 /**
  * \fn ordSet *initOrderedSet()
  * \brief initialise un ensemble ordonné à NULL
  */
-ordSet *initOrderedSet();
+ordCouple initOrderedSet();
 /**
  * \fn void freeOrderedSet(ordSet *s)
  * \brief libère un ensemble ordonné (ptr)
  * \param s un ensemble ordonné
  */
-void freeOrderedSet(ordSet *s);
+void freeOrderedSet(ordCouple *s);
 
 /**
  * \fn int getNumberElt(orsSet *s)
  * \param s un ensemble ordonné
  * \return le nombre d'éléments contenus dans l'ensemble
  */
-int getNumberElt(ordSet *s);
+int getNumberElt(ordCouple c);
+
+void printNbElt(ordCouple c);
 
 /**
  * \fn contains(ordSet *s, int x)
@@ -48,8 +55,10 @@ int getNumberElt(ordSet *s);
  * \param x un entier
  * \return un booléen
  */
+int contains(ordCouple c, int x);
 
-int contains(ordSet *s, int x);
+void printContains(ordCouple c, int x);
+
 /**
  * \fn ordSet *getInsertPosition(ordSet *s, int x)
  * \brief Fonction pour trouver l'emplacement où insérer x
@@ -70,14 +79,14 @@ ordSet *getInsertPosition(ordSet *s, int x);
  * \param x un entier
  * \return un pointeur vers l'ensemble
  */
-ordSet *insertValue(ordSet *s, int x);
+void insertValue(ordCouple *s, int x);
 
 /**
  * \fn void printOrderedSet(ordSet *s)
  * \brief Affiche l'ensemble ordonné s
  * \param s un ensemble ordonné (ptr)
  */
-void printOrderedSet(ordSet *s);
+void printOrderedSet(ordCouple c);
 
 /**
  * \fn ordSet *insertValueDumb(ordSet *s, int x)
@@ -95,7 +104,7 @@ ordSet *insertValueDumb(ordSet *s, int x);
  * \param s un ensemble ordonné (ptr)
  * \return un pointeur vers le nouvel ensemble
  */
-ordSet *copyOrderedSet(ordSet *s);
+ordCouple copyOrderedSet(ordCouple c);
 
 /**
  * \fn ordSet *intersect(ordSet *s1, ordSet *s2)

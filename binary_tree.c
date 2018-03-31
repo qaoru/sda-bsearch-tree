@@ -38,7 +38,7 @@ void freeBinarySearchTree(bTree* b){
 /*
  * Fonction qui ajoute un noued à gauche de l'enfantb
  */
-void addNodeLeft(bTree* b, char* word, ordSet* l){
+void addNodeLeft(bTree* b, char* word, ordSet l){
     bTree* node=initBinarySearchTree();
     Couple addc;
     addc.mot=malloc(MAX_WORD_SIZE);
@@ -47,7 +47,7 @@ void addNodeLeft(bTree* b, char* word, ordSet* l){
         exit(EXIT_FAILURE);
     }
     strcpy(addc.mot,word);
-    addc.positions=l;
+    addc.positions= l;
     strcpy(node->c.mot,addc.mot);
     node->c.positions=addc.positions;
     b->gauche=node;
@@ -57,7 +57,7 @@ void addNodeLeft(bTree* b, char* word, ordSet* l){
 /*
  * Fonction qui ajoute un noeud à droite de l'enfant b
  */
-void addNodeRight(bTree* b, char* word, ordSet* l){
+void addNodeRight(bTree* b, char* word, ordSet l){
     bTree* node=initBinarySearchTree();
     Couple addc;
     addc.mot=malloc(MAX_WORD_SIZE);

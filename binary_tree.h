@@ -10,7 +10,7 @@
 
 typedef struct {
     char* mot;
-    struct str_set* positions;
+    struct str_ordSet positions;
 } Couple;
 
 typedef struct s_bTree{
@@ -21,8 +21,8 @@ typedef struct s_bTree{
 
 bTree* initBinarySearchTree();
 void freeBinarySearchTree(bTree* b);
-void addNodeLeft(bTree* b, char* word, ordSet* l);
-void addNodeRight(bTree* b, char* word, ordSet* l);
+void addNodeLeft(bTree* b, char* word, ordSet l);
+void addNodeRight(bTree* b, char* word, ordSet l);
 void getNumberStringAux(bTree *b, char** words, int* count);
 int getNumberString(bTree *b);
 int getTotalNumberString(bTree *b);

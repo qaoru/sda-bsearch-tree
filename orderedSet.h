@@ -10,7 +10,7 @@
 
 /**
  * \struct str_set
- * \brief Ensemble ordonné d'entiers
+ * \brief Elément d'un ensemble ordonné d'entiers
  *
  * Contient un entier et un pointeur vers l'élément suivant,
  * à la manière d'une liste chainée
@@ -18,101 +18,99 @@
 typedef struct str_set {
     int pos;
     struct str_set * next;
-} ordSet;
+}  ordSetElt;
 
-typedef struct str_ordCouple {
-    ordSet * start;
-    ordSet * last;
-} ordCouple;
+/**
+ * \struct str_ordSet
+ * \brief Ensemble ordonné d'entiers
+ *
+ * Contient un pointeur vers le premier élément
+ * et le dernier
+ */
+typedef struct str_ordSet {
+    ordSetElt * start;
+    ordSetElt * last;
+} ordSet;
 
 void memerr();
 
 /**
- * \fn ordSet *initOrderedSet()
- * \brief initialise un ensemble ordonné à NULL
+ * \fn ordSet initOrderedSet()
+ * \brief Initialise un ensemble ordonné
  */
-ordCouple initOrderedSet();
+ordSet initOrderedSet();
+
 /**
  * \fn void freeOrderedSet(ordSet *s)
- * \brief libère un ensemble ordonné (ptr)
- * \param s un ensemble ordonné
+ * \brief Libère un ensemble ordonné
+ * \param s l'adresse d'un ensemble ordonné
  */
-void freeOrderedSet(ordCouple *s);
+void freeOrderedSet(ordSet *s);
 
 /**
- * \fn int getNumberElt(orsSet *s)
- * \param s un ensemble ordonné
+ * \fn int getNumberElt(ordSet c)
+ * \param c un ensemble ordonné
  * \return le nombre d'éléments contenus dans l'ensemble
  */
-int getNumberElt(ordCouple c);
+int getNumberElt(ordSet c);
 
-void printNbElt(ordCouple c);
+void printNbElt(ordSet c);
 
 /**
- * \fn contains(ordSet *s, int x)
- * \brief Teste si s contient x
- * \param s un ensemble ordonné (ptr)
+ * \fn contains(ordSet c, int x)
+ * \brief Teste si c contient x
+ * \param c un ensemble ordonné 
  * \param x un entier
  * \return un booléen
  */
-int contains(ordCouple c, int x);
+int contains(ordSet c, int x);
 
-void printContains(ordCouple c, int x);
+void printContains(ordSet c, int x);
 
 /**
- * \fn ordSet *getInsertPosition(ordSet *s, int x)
+ * \fn ordSetElt *getInsertPosition(ordSetElt *s, int x)
  * \brief Fonction pour trouver l'emplacement où insérer x
  * On suppose s non vide, la valeur NULL étant renvoyée si x
  * est déjà présent dans s
- * \param s un emsemble ordonné > NON VIDE < (ptr)
+ * \param s un pointeur vers un élément d'ensemble ordonné
  * \param x un entier
  * \return
  *     - le maillon après lequel l'élément doit être inséré
  *     - NULL si l'ensemble contient déjà l'élément
  */
-ordSet *getInsertPosition(ordSet *s, int x);
+ordSetElt *getInsertPosition(ordSetElt *s, int x);
 
 /**
- * \fn ordSet *insertValue(ordSet *s, int x)
+ * \fn void insertValue(ordSet *s, int x)
  * \brief Insère x dans s, de manière ordonnée croissante
- * \param s un ensemble ordonné (ptr)
+ * \param s l'adresse d'un ensemble ordonné
  * \param x un entier
- * \return un pointeur vers l'ensemble
  */
-void insertValue(ordCouple *s, int x);
+void insertValue(ordSet *s, int x);
 
 /**
- * \fn void printOrderedSet(ordSet *s)
+ * \fn void printOrderedSet(ordSet c)
  * \brief Affiche l'ensemble ordonné s
- * \param s un ensemble ordonné (ptr)
+ * \param c un ensemble ordonné
  */
-void printOrderedSet(ordCouple c);
+void printOrderedSet(ordSet c);
+
 
 /**
- * \fn ordSet *insertValueDumb(ordSet *s, int x)
- * \brief Insère la x à la suite du premier maillon de s
- * \param s un ensemble ordonné (ptr)
- * \param x un entier
- * \return un pointeur vers l'ensemble
- */
-ordSet *insertValueDumb(ordSet *s, int x);
-
-/**
- * \fn ordSet *copyOrderedSet(ordSet *s)
+ * \fn ordSet copyOrderedSet(ordSet c)
  * \brief Copie s et renvoie un pointeur vers sa copie
  * Ne pas oublier de libérer la mémoire nouvellement allouée !
- * \param s un ensemble ordonné (ptr)
- * \return un pointeur vers le nouvel ensemble
+ * \param c un ensemble ordonné
+ * \return un nouvel ensemble
  */
-ordCouple copyOrderedSet(ordCouple c);
+ ordSet copyOrderedSet(ordSet c);
 
 /**
- * \fn ordSet *intersect(ordSet *s1, ordSet *s2)
+ * \fn ordSet intersect(ordSet c1, ordSet c2)
  * \brief Renvoie un nouvel ensemble étant l'intersection de s1 et s2
- * Par soucis d'optimisation, passer l'emsemble le + grand en premier paramètre
- * \param s1 un ensemble ordonné (ptr)
- * \param s2 un ensemble ordonné (ptr)
- * \return un pointeur vers le nouvel ensemble
+ * \param c1 un ensemble ordonné
+ * \param c2 un ensemble ordonné
+ * \return un nouvel ensemble
  */
-ordSet *intersect(ordSet *s1, ordSet *s2);
+ordSetElt *intersect( ordSetElt *s1,  ordSetElt *s2);
 #endif

@@ -6,15 +6,15 @@ void memerr() {
     exit(EXIT_FAILURE);
 }
 
-ordCouple initOrderedSet() {
-    ordCouple res;
+ordSet initOrderedSet() {
+    ordSet res;
     res.start = NULL;
     res.last = NULL;
     return res;
 }
 
-void freeOrderedSet(ordCouple *s) {
-    ordSet * tmp;
+void freeOrderedSet(ordSet *s) {
+     ordSetElt * tmp;
     while(s->start != NULL) {
         tmp = s->start;
         s->start = tmp->next;
@@ -22,8 +22,8 @@ void freeOrderedSet(ordCouple *s) {
     }
 }
 
-int getNumberElt(ordCouple c) {
-    ordSet *s = c.start;
+int getNumberElt(ordSet c) {
+     ordSetElt *s = c.start;
     int cnt = 0;
     while(s != NULL) {
         cnt++;
@@ -32,13 +32,13 @@ int getNumberElt(ordCouple c) {
     return cnt;
 }
 
-void printNbElt(ordCouple c) {
+void printNbElt(ordSet c) {
     printf("L'ensemble contient %d éléments.\n", getNumberElt(c));
     printf("Le premier élément est %d et le dernier est %d.\n", c.start->pos, c.last->pos);
 }
 
-int contains(ordCouple c, int x) {
-    ordSet *s = c.start;
+int contains(ordSet c, int x) {
+     ordSetElt *s = c.start;
     while(s != NULL) {
         if(s->pos == x) {
             return 1;
@@ -48,7 +48,7 @@ int contains(ordCouple c, int x) {
     return 0;
 }
 
-void printContains(ordCouple c, int x) {
+void printContains(ordSet c, int x) {
     if(contains(c, x)) {
         printf("L'ensemble contient %d.\n", x);
     } else {
@@ -67,9 +67,9 @@ void printContains(ordCouple c, int x) {
   *       si il faut insérer avant ou après
   */
 
-ordSet *getInsertPosition(ordSet *s, int x) {
+ ordSetElt *getInsertPosition( ordSetElt *s, int x) {
     printf("insert passage pour x = %d\n", x);
-    ordSet * old = s;
+     ordSetElt * old = s;
     while(s != NULL) {
         if(s->pos == x) {
             return NULL;
@@ -84,15 +84,15 @@ ordSet *getInsertPosition(ordSet *s, int x) {
     return old;
 }
 
-void insertValue(ordCouple *s, int x) {
-    ordSet *before;
+void insertValue(ordSet *s, int x) {
+     ordSetElt *before;
     if(s->start != NULL && x < s->last->pos) {
         before = getInsertPosition(s->start, x);
         if(before == NULL) {    //s contient déjà x
             return;
         }
     }
-    ordSet *newElt = NULL;
+     ordSetElt *newElt = NULL;
     if((newElt = malloc(sizeof(struct str_set))) == NULL) {
         memerr();
     }
@@ -126,8 +126,8 @@ void insertValue(ordCouple *s, int x) {
     //return start;
 }
 
-void printOrderedSet(ordCouple c) {
-    ordSet *s = c.start;
+void printOrderedSet(ordSet c) {
+     ordSetElt *s = c.start;
     if(s == NULL) {
         printf("L'ensemble est vide.\n");
         return;
@@ -140,10 +140,10 @@ void printOrderedSet(ordCouple c) {
 }
 
 
-ordCouple copyOrderedSet(ordCouple c) {
-    ordCouple res = initOrderedSet();
-    ordSet *s = c.start;
-    ordCouple * tmp = &res;
+ordSet copyOrderedSet(ordSet c) {
+    ordSet res = initOrderedSet();
+    ordSetElt *s = c.start;
+    ordSet * tmp = &res;
     while(s != NULL) {
         insertValue(tmp,s->pos);
         s = s->next;
@@ -151,8 +151,8 @@ ordCouple copyOrderedSet(ordCouple c) {
     return res;
 }
 /*
-ordSet *intersect(ordSet *s1, ordSet *s2) {
-    ordSet *res = NULL;
+ordSetElt *intersect(ordSetElt *s1, ordSetElt *s2) {
+    ordSetElt *res = NULL;
     res = copyOrderedSet(s1);
     while(s2 != NULL) {
         res = insertValue(res, s2->pos);

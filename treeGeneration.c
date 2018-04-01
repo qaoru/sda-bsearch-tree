@@ -2,6 +2,10 @@
 
 void readTree(const char * path, char * buffer) {
     int fd, n;
+    char *spec;
+    if((spec = malloc(BUFFSIZE) == NULL) {
+        error("malloc");
+    }
     if((fd = open(path, O_RDONLY)) == -1) {
         error(1, "open");
     }

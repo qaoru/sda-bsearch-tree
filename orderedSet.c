@@ -33,11 +33,25 @@ void printNbElt(ordSet c) {
 
 int contains(ordSet c, int x) {
     ordSetElt *s = c.start;
-    while(s != NULL) {
-        if(s->pos == x) {
+    if(s != NULL) {
+        // Cas : x égal au premier ou dernier élément
+        if(s->pos == x || (c.last)->pos == x) {
             return 1;
         }
-        s = s->next;
+        // Cas : x hors des bornes de l'ensemble
+        if(s->pos > x || (c.last)->pos < x) {
+            return 0;
+        }
+        s = s->next;    //premier élément déjà testé
+        while(s != NULL) {
+            if(s->pos == x) {
+                return 1;
+            }
+            if(s->pos > x) {
+                return 0;
+            }
+            s = s->next;
+        }
     }
     return 0;
 }
@@ -149,7 +163,7 @@ ordSet intersect(ordSet c1, ordSet c2) {
 
     ordSetElt *e1 = c1.start;
     ordSetElt *e2 = c2.start;
-    while(e1->next != NULL && e2->next != NULL) {
+    while(e1->next != NULL && e2->next != NULL && e1->pos <= (c1.last)->pos && e2->pos <= (c2.last)->pos) {
         if(e1->pos == e2->pos) {
             insertValue(&res, e1->pos);
             e1 = e1->next;

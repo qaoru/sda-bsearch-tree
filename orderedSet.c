@@ -1,11 +1,5 @@
 #include "orderedSet.h"
 
-void memerr() {
-    fprintf(stderr, "oh snap ! cannot malloc ..");
-    perror("malloc");
-    exit(EXIT_FAILURE);
-}
-
 ordSet initOrderedSet() {
     ordSet res;
     res.start = NULL;
@@ -82,7 +76,7 @@ void insertValue(ordSet *s, int x) {
     }
     ordSetElt *newElt = NULL;
     if((newElt = malloc(sizeof(struct str_set))) == NULL) {
-        memerr();
+        error(1, "oh snap ! cannot malloc ...");
     }
     newElt->pos = x;
 
@@ -139,6 +133,7 @@ ordSet copyOrderedSet(ordSet c) {
     return res;
 }
 
+// Complexité max : O(n+m)
 ordSet intersect(ordSet c1, ordSet c2) {
     ordSet res = initOrderedSet();
 

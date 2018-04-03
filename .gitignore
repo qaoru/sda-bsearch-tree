@@ -2,5 +2,6 @@
 *.dSYM
 .vscode
 *.o
+obj
 main
 html

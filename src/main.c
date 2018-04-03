@@ -18,7 +18,7 @@ int main(const int argc, const char* argv[]) {
 
     ordSet s1 = initOrderedSet();
     insertValue(&s1, 2);
-    insertValue(&s1, 1);
+    insertValue(&s1, 2);
     insertValue(&s1, 7);
     insertValue(&s1, 5);
 
@@ -53,8 +53,10 @@ int main(const int argc, const char* argv[]) {
     printf("\n");
     //freeBinarySearchTree(t1);
     */
+   
     bTree *test = generateTree(argv[1]);
     printBinarySearchTree(test,1);
+    freeBinarySearchTree(test);
 
 
 

@@ -83,9 +83,6 @@ ordSetElt *getInsertPosition(ordSetElt *s, int x) {
 void insertValue(ordSet *s, int x) {
     ordSetElt *before;
     if(s->start != NULL) {
-        if(x < s->last->pos) {
-            return;
-        }
         before = getInsertPosition(s->start, x);
         if(before == NULL) {    //s contient déjà x
             return;

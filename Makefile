@@ -1,5 +1,5 @@
-CC = gcc
-CFLAGS = -g -Wall -Wextra -Werror
+CC = gcc -g
+CFLAGS = -Wall -Wextra -Werror
 DEP = orderedSet.c binary_tree.c
 
 main: main.o orderedSet.o binary_tree.o utils.o treeGeneration.o

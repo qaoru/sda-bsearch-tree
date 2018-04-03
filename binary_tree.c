@@ -11,7 +11,7 @@ bTree* initBinarySearchTree(){
     newt->droite = NULL;
     newt->gauche = NULL;
     newt->c.mot=malloc(MAX_WORD_SIZE);
-    if(newt->c.mot){
+    if(newt->c.mot==NULL){
         error(1,"malloc");
     }
     newt->c.positions = initOrderedSet();

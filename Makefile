@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -g -Wall -Wextra -Werror
 DEP = orderedSet.c binary_tree.c
 
-main: main.o orderedSet.o binary_tree.o utils.o
+main: main.o orderedSet.o binary_tree.o utils.o treeGeneration.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 main.o: main.c binary_tree.h
@@ -16,6 +16,9 @@ orderedSet.o: orderedSet.c orderedSet.h utils.h
 
 utils.o: utils.c utils.h
 	$(CC) $(CFLAGS) -o utils.o -c utils.c
+
+treeGeneration.o: treeGeneration.c treeGeneration.h binary_tree.h
+	$(CC) $(CFLAGS) -o treeGeneration.o -c treeGeneration.c
 
 clean:
 	rm -rf main *.o

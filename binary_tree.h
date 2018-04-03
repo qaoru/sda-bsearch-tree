@@ -26,7 +26,8 @@ void addNodeRight(bTree* b, char* word, ordSet l);
 void getNumberStringAux(bTree *b, char** words, int* count);
 int getNumberString(bTree *b);
 int getTotalNumberString(bTree *b);
-bTree* insert(Couple d, bTree *b);
+void exist(char* mot, bTree *b, int* ex);
+void insert(char* mot, int position, bTree *b);
 // Ajouter cooccurences ici
 void findAux(char* mot, bTree *b, ordSet* allindices);
 ordSet find(char *mot, bTree *b);

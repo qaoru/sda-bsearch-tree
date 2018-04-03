@@ -10,13 +10,11 @@ bTree* initBinarySearchTree(){
     }
     newt->droite = NULL;
     newt->gauche = NULL;
-    Couple newc;
-    newc.mot = malloc(MAX_WORD_SIZE);
-    if(newc.mot==NULL){
-        error(1, "malloc");
+    newt->c.mot=malloc(MAX_WORD_SIZE);
+    if(newt->c.mot){
+        error(1,"malloc");
     }
-    newc.positions = initOrderedSet();
-    newt->c = newc;
+    newt->c.positions = initOrderedSet();
     return newt;
 }
 
@@ -132,11 +130,37 @@ int getTotalNumberString(bTree *b){
     //à implémenter
 }
 
-bTree* insert(Couple d, bTree *b){
-    (void)d;
-    (void)b;
-    return NULL;
-    //à implémenter
+void exist(char* mot, bTree *b, int* ex){
+    if(b!=NULL){
+        if(strcmp(mot,b->c.mot)==0){
+            (*ex)=0;
+        }
+        else{
+            exist(mot,b->droite,ex);
+            exist(mot,b->gauche,ex);
+        }
+    }
+}
+
+void insert(char* mot, int position, bTree* b){
+    if(b==NULL){
+        bTree* new=initBinarySearchTree();
+        strcpy(new->c.mot,mot);
+        insertValue(&new->c.positions,position);
+        b=new;
+        free(new);
+    }
+    else{
+        if(strcmp(mot,b->c.mot)==0){
+            insertValue(&b->c.positions,position);
+        }
+        else if(strcmp(mot,b->c.mot)>0){
+            insert(mot,position,b->droite);
+        }
+        else if(strcmp(mot,b->c.mot)<0){
+            insert(mot,position,b->gauche);
+        }
+    }
 }
 
 /*
@@ -167,10 +191,7 @@ ordSet find(char* mot, bTree *b){
 }
 
 void printBinarySearchTree(bTree *b, int prof){
-    if(b==NULL){
-        return;
-    }
-    else{
+    if(b!=NULL){
         int i;
         printf("|");
         for(i=0;i<prof-1;i++){
@@ -179,7 +200,7 @@ void printBinarySearchTree(bTree *b, int prof){
         printf("|->%s ",b->c.mot);
         printf("(");
         printOrderedSet(b->c.positions);
-        printf(")\n");
+        printf(" )\n");
         printBinarySearchTree(b->droite,prof+1);
         printBinarySearchTree(b->gauche,prof+1);
     }

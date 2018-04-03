@@ -101,7 +101,7 @@ void insertValue(ordSet *s, int x) {
         s->last = newElt;
         return;
     }
-    
+
     // Cas : insérer en tête
     if(before->pos > x) {
         newElt->next = before;
@@ -165,5 +165,5 @@ ordSet intersect(ordSet c1, ordSet c2) {
             e2 = e2->next;
         }
     }
-    return res;    
+    return res;
 }

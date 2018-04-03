@@ -14,11 +14,8 @@ int main(const int argc, const char* argv[]) {
         error(0, "usage : ./main <fichier>");
     }
 
-<<<<<<< HEAD
     // Tests orderedSet
 
-=======
->>>>>>> 284cc61ac1739265d8bad163cafa437b90f40d02
     ordSet s1 = initOrderedSet();
     insertValue(&s1, 2);
     insertValue(&s1, 1);
@@ -33,7 +30,6 @@ int main(const int argc, const char* argv[]) {
 
     ordSet s3 = intersect(s1, s2);
     printOrderedSet(s3);
-<<<<<<< HEAD
     printf("\ns1 : \n");
     printOrderedSet(s1);
     printf("\ns2 : \n");
@@ -59,8 +55,6 @@ int main(const int argc, const char* argv[]) {
     freeBinarySearchTree(t1);
 
 
-=======
->>>>>>> 284cc61ac1739265d8bad163cafa437b90f40d02
     freeOrderedSet(&s1);
     freeOrderedSet(&s2);
     freeOrderedSet(&s3);

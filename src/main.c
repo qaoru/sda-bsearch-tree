@@ -18,7 +18,7 @@ int main(const int argc, const char* argv[]) {
 
     ordSet s1 = initOrderedSet();
     insertValue(&s1, 2);
-    insertValue(&s1, 1);
+    insertValue(&s1, 2);
     insertValue(&s1, 7);
     insertValue(&s1, 5);
 
@@ -40,24 +40,36 @@ int main(const int argc, const char* argv[]) {
     printf("\n\n ===================$$$$$$===================\n\n");
 
     // Tests binary_tree
-
+    /*
     bTree* t1=NULL;
     insert("foo",1,&t1);
     insert("foo",2,&t1);
     insert("foo",3,&t1);
     insert("qux",6,&t1);
     insert("corge",3,&t1);
+    insert("foo",4,&t1);
+
     printBinarySearchTree(t1,1);
     printf("\nTest find:\n");
     printOrderedSet(find("lili",t1));
     printf("\n");
+<<<<<<< HEAD:main.c
     printf("TotalNumberString: %d\n",getTotalNumberString(t1));
     freeBinarySearchTree(t1);
+=======
+    //freeBinarySearchTree(t1);
+    */
+   
+    bTree *test = generateTree(argv[1]);
+    printBinarySearchTree(test,1);
+    freeBinarySearchTree(test);
+
+>>>>>>> 6fdad9f408d3dae9587f5444095b5d351fcd388a:src/main.c
 
 
     freeOrderedSet(&s1);
     freeOrderedSet(&s2);
     freeOrderedSet(&s3);
-    (void)generateTree(argv[1]);
+    //(void)generateTree(argv[1]);
     return 0;
 }

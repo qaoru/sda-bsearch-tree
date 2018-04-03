@@ -28,6 +28,7 @@ void freeBinarySearchTree(bTree* b){
     freeBinarySearchTree(b->droite);
     freeBinarySearchTree(b->gauche);
     free(b->c.mot);
+    freeOrderedSet(&(b->c.positions));
     free(b);
 }
 
@@ -169,13 +170,13 @@ void printBinarySearchTree(bTree *b, int prof){
         int i;
         printf("|");
         for(i=0;i<prof-1;i++){
-            printf(" ");
+            printf(".");
         }
         printf("|->%s ",b->c.mot);
         printf("(");
         printOrderedSet(b->c.positions);
         printf(" )\n");
-        printBinarySearchTree(b->droite,prof+1);
         printBinarySearchTree(b->gauche,prof+1);
+        printBinarySearchTree(b->droite,prof+1);
     }
 }

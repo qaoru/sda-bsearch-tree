@@ -5,8 +5,7 @@
 
 #ifndef ORDSET_H
 #define ORDSET_H
-#include <stdio.h>
-#include <stdlib.h>
+#include "utils.h"
 
 /**
  * \struct str_set
@@ -32,7 +31,6 @@ typedef struct str_ordSet {
     ordSetElt * last;
 } ordSet;
 
-void memerr();
 
 /**
  * \fn ordSet initOrderedSet()

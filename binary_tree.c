@@ -6,16 +6,14 @@
 bTree* initBinarySearchTree(){
     bTree* newt=malloc(sizeof(struct s_bTree));
     if(newt==NULL){
-        perror("malloc");
-        exit(EXIT_FAILURE);
+        error(1, "malloc");
     }
     newt->droite = NULL;
     newt->gauche = NULL;
     Couple newc;
     newc.mot = malloc(MAX_WORD_SIZE);
     if(newc.mot==NULL){
-        perror("malloc");
-        exit(EXIT_FAILURE);
+        error(1, "malloc");
     }
     newc.positions = initOrderedSet();
     newt->c = newc;
@@ -43,8 +41,7 @@ void addNodeLeft(bTree* b, char* word, ordSet l){
     Couple addc;
     addc.mot=malloc(MAX_WORD_SIZE);
     if(addc.mot==NULL){
-        perror("malloc");
-        exit(EXIT_FAILURE);
+        error(1, "malloc");
     }
     strcpy(addc.mot,word);
     addc.positions= l;
@@ -62,8 +59,7 @@ void addNodeRight(bTree* b, char* word, ordSet l){
     Couple addc;
     addc.mot=malloc(MAX_WORD_SIZE);
     if(addc.mot==NULL){
-        perror("malloc");
-        exit(EXIT_FAILURE);
+        error(1, "malloc");
     }
     strcpy(addc.mot,word);
     addc.positions=l;
@@ -118,7 +114,9 @@ void getNumberStringAux(bTree *b, char** words, int* count){
 int getNumberString(bTree *b){
     char* words[TAB_SIZE];
     for(int i=0;i<TAB_SIZE;i++){
-        words[i]=malloc(50*sizeof(char));
+        if((words[i]=malloc(50)) == NULL) {
+            error(1, "malloc");
+        }
     }
     int count=0;
     getNumberStringAux(b,words,&count);

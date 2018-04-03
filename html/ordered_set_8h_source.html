@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Co-Occurences de mots:  Fichier source de orderedSet.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Co-Occurences de mots
+   </div>
+   <div id="projectbrief">Projet SDA2 2018</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">orderedSet.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="ordered_set_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef ORDSET_H</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define ORDSET_H</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structstr__set.html">   18</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structstr__set.html">str_set</a> {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">int</span> pos;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">struct </span><a class="code" href="structstr__set.html">str_set</a> * next;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;} <a class="code" href="structstr__set.html">ordSet</a>;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> memerr();</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<a class="code" href="structstr__set.html">ordSet</a> *<a class="code" href="ordered_set_8h.html#a5d5c82013c65c926d42bc34ab7e8d7e7">initOrderedSet</a>();</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> <a class="code" href="ordered_set_8h.html#affa072317d3cb318726a3f332b907ca6">freeOrderedSet</a>(<a class="code" href="structstr__set.html">ordSet</a> *s);</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">int</span> getNumberElt(<a class="code" href="structstr__set.html">ordSet</a> *s);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">int</span> <a class="code" href="ordered_set_8h.html#a2a96ed9c25b790fceedf401e35d28276">contains</a>(<a class="code" href="structstr__set.html">ordSet</a> *s, <span class="keywordtype">int</span> x);</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<a class="code" href="structstr__set.html">ordSet</a> *<a class="code" href="ordered_set_8h.html#aeac8446711f624dba56e3f8667a7b707">getInsertPosition</a>(<a class="code" href="structstr__set.html">ordSet</a> *s, <span class="keywordtype">int</span> x);</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<a class="code" href="structstr__set.html">ordSet</a> *<a class="code" href="ordered_set_8h.html#a029b90de033b7523472e3851d535a021">insertValue</a>(<a class="code" href="structstr__set.html">ordSet</a> *s, <span class="keywordtype">int</span> x);</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> <a class="code" href="ordered_set_8h.html#a37ef79232e6fef7d7eb107f767fcc203">printOrderedSet</a>(<a class="code" href="structstr__set.html">ordSet</a> *s);</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<a class="code" href="structstr__set.html">ordSet</a> *<a class="code" href="ordered_set_8h.html#af7a9447f0abaee28318d66e843844b39">insertValueDumb</a>(<a class="code" href="structstr__set.html">ordSet</a> *s, <span class="keywordtype">int</span> x);</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<a class="code" href="structstr__set.html">ordSet</a> *<a class="code" href="ordered_set_8h.html#aa69fc0911cd9b557a77c2d0260da4a7f">copyOrderedSet</a>(<a class="code" href="structstr__set.html">ordSet</a> *s);</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<a class="code" href="structstr__set.html">ordSet</a> *<a class="code" href="ordered_set_8h.html#a9e6e56b5345c5f56cde3bc3289e8805c">intersect</a>(<a class="code" href="structstr__set.html">ordSet</a> *s1, <a class="code" href="structstr__set.html">ordSet</a> *s2);</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="ordered_set_8h_html_a5d5c82013c65c926d42bc34ab7e8d7e7"><div class="ttname"><a href="ordered_set_8h.html#a5d5c82013c65c926d42bc34ab7e8d7e7">initOrderedSet</a></div><div class="ttdeci">ordSet * initOrderedSet()</div><div class="ttdoc">initialise un ensemble ordonné à NULL </div><div class="ttdef"><b>Definition:</b> orderedSet.c:9</div></div>
+<div class="ttc" id="ordered_set_8h_html_affa072317d3cb318726a3f332b907ca6"><div class="ttname"><a href="ordered_set_8h.html#affa072317d3cb318726a3f332b907ca6">freeOrderedSet</a></div><div class="ttdeci">void freeOrderedSet(ordSet *s)</div><div class="ttdoc">libère un ensemble ordonné (ptr) </div><div class="ttdef"><b>Definition:</b> orderedSet.c:13</div></div>
+<div class="ttc" id="ordered_set_8h_html_a37ef79232e6fef7d7eb107f767fcc203"><div class="ttname"><a href="ordered_set_8h.html#a37ef79232e6fef7d7eb107f767fcc203">printOrderedSet</a></div><div class="ttdeci">void printOrderedSet(ordSet *s)</div><div class="ttdoc">Affiche l&amp;#39;ensemble ordonné s. </div><div class="ttdef"><b>Definition:</b> orderedSet.c:100</div></div>
+<div class="ttc" id="ordered_set_8h_html_af7a9447f0abaee28318d66e843844b39"><div class="ttname"><a href="ordered_set_8h.html#af7a9447f0abaee28318d66e843844b39">insertValueDumb</a></div><div class="ttdeci">ordSet * insertValueDumb(ordSet *s, int x)</div><div class="ttdoc">Insère la x à la suite du premier maillon de s. </div><div class="ttdef"><b>Definition:</b> orderedSet.c:113</div></div>
+<div class="ttc" id="ordered_set_8h_html_a029b90de033b7523472e3851d535a021"><div class="ttname"><a href="ordered_set_8h.html#a029b90de033b7523472e3851d535a021">insertValue</a></div><div class="ttdeci">ordSet * insertValue(ordSet *s, int x)</div><div class="ttdoc">Insère x dans s, de manière ordonnée croissante. </div><div class="ttdef"><b>Definition:</b> orderedSet.c:68</div></div>
+<div class="ttc" id="ordered_set_8h_html_aa69fc0911cd9b557a77c2d0260da4a7f"><div class="ttname"><a href="ordered_set_8h.html#aa69fc0911cd9b557a77c2d0260da4a7f">copyOrderedSet</a></div><div class="ttdeci">ordSet * copyOrderedSet(ordSet *s)</div><div class="ttdoc">Copie s et renvoie un pointeur vers sa copie Ne pas oublier de libérer la mémoire nouvellement alloué...</div><div class="ttdef"><b>Definition:</b> orderedSet.c:128</div></div>
+<div class="ttc" id="structstr__set_html"><div class="ttname"><a href="structstr__set.html">str_set</a></div><div class="ttdoc">Ensemble ordonné d&amp;#39;entiers. </div><div class="ttdef"><b>Definition:</b> orderedSet.h:18</div></div>
+<div class="ttc" id="ordered_set_8h_html_a2a96ed9c25b790fceedf401e35d28276"><div class="ttname"><a href="ordered_set_8h.html#a2a96ed9c25b790fceedf401e35d28276">contains</a></div><div class="ttdeci">int contains(ordSet *s, int x)</div><div class="ttdoc">Teste si s contient x. </div><div class="ttdef"><b>Definition:</b> orderedSet.c:31</div></div>
+<div class="ttc" id="ordered_set_8h_html_aeac8446711f624dba56e3f8667a7b707"><div class="ttname"><a href="ordered_set_8h.html#aeac8446711f624dba56e3f8667a7b707">getInsertPosition</a></div><div class="ttdeci">ordSet * getInsertPosition(ordSet *s, int x)</div><div class="ttdoc">Fonction pour trouver l&amp;#39;emplacement où insérer x On suppose s non vide, la valeur NULL étant renvoyée...</div><div class="ttdef"><b>Definition:</b> orderedSet.c:52</div></div>
+<div class="ttc" id="ordered_set_8h_html_a9e6e56b5345c5f56cde3bc3289e8805c"><div class="ttname"><a href="ordered_set_8h.html#a9e6e56b5345c5f56cde3bc3289e8805c">intersect</a></div><div class="ttdeci">ordSet * intersect(ordSet *s1, ordSet *s2)</div><div class="ttdoc">Renvoie un nouvel ensemble étant l&amp;#39;intersection de s1 et s2 Par soucis d&amp;#39;optimisation, passer l&amp;#39;emsemble le + grand en premier paramètre. </div><div class="ttdef"><b>Definition:</b> orderedSet.c:139</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

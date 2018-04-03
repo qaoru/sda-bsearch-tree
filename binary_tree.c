@@ -143,11 +143,27 @@ bTree* insert(Couple d, bTree *b){
  *Ajouter cooccurences ici
  */
 
-ordSet* find(char* mot, bTree *b){
-    (void)mot;
-    (void)b;
-    return NULL;
-    // à implémenter
+void findAux(char* mot, bTree *b, ordSet* allindices){
+    if(b!=NULL){
+        if(strcmp(b->c.mot,mot)==0){
+            if(allindices->start==NULL&&allindices->last==NULL){
+                (*allindices)=b->c.positions;
+            }
+            else{
+                (*allindices)=intersect(*allindices,b->c.positions);
+            }
+            findAux(mot,b->droite,allindices);
+            findAux(mot,b->gauche,allindices);
+        }
+        findAux(mot,b->droite,allindices);
+        findAux(mot,b->gauche,allindices);
+    }
+}
+
+ordSet find(char* mot, bTree *b){
+    ordSet all=initOrderedSet();
+    findAux(mot,b,&all);
+    return all;
 }
 
 void printBinarySearchTree(bTree *b, int prof){

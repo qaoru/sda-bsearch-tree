@@ -11,7 +11,7 @@
 int main() {
 
     // Tests orderedSet
-    
+
     ordSet s1 = initOrderedSet();
     insertValue(&s1, 1);
     insertValue(&s1, 4);
@@ -44,7 +44,7 @@ int main() {
     printf("\n\n ===================$$$$$$===================\n\n");
 
     // Tests binary_tree
-    
+
     bTree* t1 = initBinarySearchTree();
     strcpy(t1->c.mot,"lili");
     t1->c.positions=s1;
@@ -52,8 +52,12 @@ int main() {
     addNodeRight(t1,"lolo",s2);
     printf("%d\n",getNumberString(t1));
     printBinarySearchTree(t1,1);
+    printOrderedSet(find("lili",t1));
+    ordSet test=intersect(s1,s1);
+    printf("\n");
+    printOrderedSet(test);
     freeBinarySearchTree(t1);
-    
+
 
     freeOrderedSet(&s1);
     freeOrderedSet(&s2);

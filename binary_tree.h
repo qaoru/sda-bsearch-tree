@@ -28,6 +28,7 @@ int getNumberString(bTree *b);
 int getTotalNumberString(bTree *b);
 bTree* insert(Couple d, bTree *b);
 // Ajouter cooccurences ici
-ordSet* find(char* mot, bTree *b);
+void findAux(char* mot, bTree *b, ordSet* allindices);
+ordSet find(char *mot, bTree *b);
 void printBinarySearchTree(bTree *b, int prof);
 #endif

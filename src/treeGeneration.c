@@ -17,13 +17,15 @@ void readTree(const char * path, char **str) {
     if(n == -1) {
         error(1, "read");
     }
+    if(close(fd) == -1) {
+        error(1, "close");
+    }
 }
 
 bTree* generateTree(const char *path) {
     char *spec;
     bTree *res = NULL;
     int size;
-    //int offset_old = 0;
     int phrase = 1;
     int i;
     int cpt = 0;
@@ -33,21 +35,20 @@ bTree* generateTree(const char *path) {
     }
     readTree(path, &spec);
     size = strlen(spec);
-    for(i = 0; i < size; i++) {
+    for(i = 0; i < (size + 1); i++) {
         if(spec[i] != ' ' && spec[i] != '\0' && spec[i] != '\n')
 		{
 			tmp[cpt++] = spec[i];
 		} else {
-            tmp[cpt] = '\0';
-            insert(tmp, phrase, &res);
-            cpt = 0;
-            tmp[0] = '\0';
+            tmp[cpt] = '\0';    // fin de mot
+            insert(tmp, phrase, &res);  // insertion du mot
+            cpt = 0;    // reset du compteur
+            tmp[0] = '\0';  // reset de la chaîne
             if(spec[i] == '\n') {
-                phrase++;
+                phrase++;   // phrase suivante
             }
         }
     }
-    
     free(spec);
     return res;
 

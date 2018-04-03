@@ -27,7 +27,8 @@ void getTotalNumberStringAux(bTree *b, int* count);
 int getTotalNumberString(bTree *b);
 void exist(char* mot, bTree *b, int* ex);
 void insert(char* mot, int position, bTree **b);
-// Ajouter cooccurences ici
+void findCooccurencesAux(bTree* b, char** mots,int nb_mots, ordSet* indices);
+ordSet findCooccurences(bTree* b, char** mots, int nb_mots);
 void findAux(char* mot, bTree *b, ordSet* allindices);
 ordSet find(char *mot, bTree *b);
 void printBinarySearchTree(bTree *b, int prof);

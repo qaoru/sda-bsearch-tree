@@ -138,9 +138,40 @@ void insert(char* mot, int position, bTree** b){
     }
 }
 
-/*
- *Ajouter cooccurences ici
- */
+void findCooccurencesAux(bTree* b, char** mots, int nb_mots, ordSet* indices){
+    int i;
+    if(b!=NULL){
+        for(i=0;i<nb_mots;i++){
+            if(strcmp(b->c.mot,mots[i])==0){
+                if(indices->start==NULL&&indices->last==NULL){
+                    (*indices)=b->c.positions;
+                }
+                else{
+                    (*indices)=intersect((*indices),b->c.positions);
+                    if(indices->start==NULL&&indices->last==NULL){
+                        exit(0);
+                    }
+                }
+            }
+        }
+        findCooccurencesAux(b->droite,mots,nb_mots,indices);
+        findCooccurencesAux(b->gauche,mots,nb_mots,indices);
+    }
+}
+
+ordSet findCooccurences(bTree *b, char** mots, int nb_mots){
+    int i;
+    int ex=0;
+    ordSet indices=initOrderedSet();
+    for(i=0;i<nb_mots;i++){
+        exist(mots[i],b,&ex);
+        if(ex!=0){
+            return indices;
+        }
+    }
+    findCooccurencesAux(b,mots,nb_mots,&indices);
+    return indices;
+}
 
 void findAux(char* mot, bTree *b, ordSet* allindices){
     if(b!=NULL){

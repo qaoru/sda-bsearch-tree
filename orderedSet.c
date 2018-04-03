@@ -163,7 +163,7 @@ ordSet intersect(ordSet c1, ordSet c2) {
 
     ordSetElt *e1 = c1.start;
     ordSetElt *e2 = c2.start;
-    while(e1->next != NULL && e2->next != NULL && e1->pos <= (c1.last)->pos && e2->pos <= (c2.last)->pos) {
+    while(e1 != NULL && e2 != NULL && e1->pos <= (c1.last)->pos && e2->pos <= (c2.last)->pos) {
         if(e1->pos == e2->pos) {
             insertValue(&res, e1->pos);
             e1 = e1->next;

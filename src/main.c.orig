@@ -53,13 +53,18 @@ int main(const int argc, const char* argv[]) {
     printf("\nTest find:\n");
     printOrderedSet(find("lili",t1));
     printf("\n");
+<<<<<<< HEAD:main.c
     printf("TotalNumberString: %d\n",getTotalNumberString(t1));
     freeBinarySearchTree(t1);
+=======
+    //freeBinarySearchTree(t1);
     */
-
+   
     bTree *test = generateTree(argv[1]);
     printBinarySearchTree(test,1);
     freeBinarySearchTree(test);
+
+>>>>>>> 6fdad9f408d3dae9587f5444095b5d351fcd388a:src/main.c
 
 
     freeOrderedSet(&s1);

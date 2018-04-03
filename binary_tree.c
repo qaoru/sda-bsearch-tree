@@ -89,10 +89,21 @@ int getNumberString(bTree *b){
     return count;
 }
 
+void getTotalNumberStringAux(bTree *b, int* count){
+    if(b==NULL){
+        (*count)+=0;
+    }
+    else{
+        (*count)+=getNumberElt(b->c.positions);
+        getTotalNumberStringAux(b->droite,count);
+        getTotalNumberStringAux(b->gauche,count);
+    }
+}
+
 int getTotalNumberString(bTree *b){
-    (void)b;
-    return 0;
-    //à implémenter
+    int count=0;
+    getTotalNumberStringAux(b,&count);
+    return count;
 }
 
 void exist(char* mot, bTree *b, int* ex){

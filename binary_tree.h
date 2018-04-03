@@ -23,6 +23,7 @@ bTree* initBinarySearchTree();
 void freeBinarySearchTree(bTree* b);
 void getNumberStringAux(bTree *b, char** words, int* count);
 int getNumberString(bTree *b);
+void getTotalNumberStringAux(bTree *b, int* count);
 int getTotalNumberString(bTree *b);
 void exist(char* mot, bTree *b, int* ex);
 void insert(char* mot, int position, bTree **b);

@@ -43,13 +43,16 @@ int main(const int argc, const char* argv[]) {
 
     bTree* t1=NULL;
     insert("foo",1,&t1);
+    insert("foo",2,&t1);
+    insert("foo",3,&t1);
     insert("qux",6,&t1);
     insert("corge",3,&t1);
     printBinarySearchTree(t1,1);
     printf("\nTest find:\n");
     printOrderedSet(find("lili",t1));
     printf("\n");
-    //freeBinarySearchTree(t1);
+    printf("TotalNumberString: %d\n",getTotalNumberString(t1));
+    freeBinarySearchTree(t1);
 
 
     freeOrderedSet(&s1);

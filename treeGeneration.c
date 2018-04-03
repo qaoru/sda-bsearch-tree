@@ -19,13 +19,36 @@ void readTree(const char * path, char **str) {
     }
 }
 
-void generateTree(const char *path) {
+bTree* generateTree(const char *path) {
     char *spec;
+    bTree *res = NULL;
+    int size;
+    //int offset_old = 0;
+    int phrase = 1;
+    int i;
+    int cpt = 0;
+    char tmp[PATH_MAX];
     if((spec = malloc(BUFFSIZE)) == NULL) {
         error(1, "malloc");
     }
     readTree(path, &spec);
-    printf("%s", spec);
+    size = strlen(spec);
+    for(i = 0; i < size; i++) {
+        if(spec[i] != ' ' && spec[i] != '\0' && spec[i] != '\n')
+		{
+			tmp[cpt++] = spec[i];
+		} else {
+            tmp[cpt] = '\0';
+            insert(tmp, phrase, &res);
+            cpt = 0;
+            tmp[0] = '\0';
+            if(spec[i] == '\n') {
+                phrase++;
+            }
+        }
+    }
+    
     free(spec);
+    return res;
 
 }

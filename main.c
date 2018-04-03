@@ -40,21 +40,27 @@ int main(const int argc, const char* argv[]) {
     printf("\n\n ===================$$$$$$===================\n\n");
 
     // Tests binary_tree
-
+    /*
     bTree* t1=NULL;
     insert("foo",1,&t1);
     insert("qux",6,&t1);
     insert("corge",3,&t1);
+    insert("foo",4,&t1);
+
     printBinarySearchTree(t1,1);
     printf("\nTest find:\n");
     printOrderedSet(find("lili",t1));
     printf("\n");
     //freeBinarySearchTree(t1);
+    */
+    bTree *test = generateTree(argv[1]);
+    printBinarySearchTree(test,1);
+
 
 
     freeOrderedSet(&s1);
     freeOrderedSet(&s2);
     freeOrderedSet(&s3);
-    (void)generateTree(argv[1]);
+    //(void)generateTree(argv[1]);
     return 0;
 }

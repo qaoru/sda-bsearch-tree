@@ -2,11 +2,12 @@
 #define TREEGEN_H
 #include <fcntl.h>
 #include <unistd.h>
+#include <limits.h>
 #include "binary_tree.h"
 
 #define BUFFSIZE 4096
 
 void readTree(const char * path, char **str);
-void generateTree(const char *path);
+bTree* generateTree(const char *path);
 
 #endif

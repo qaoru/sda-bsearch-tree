@@ -164,7 +164,7 @@ void printBinarySearchTree(bTree *b, int prof){
         printf("(");
         printOrderedSet(b->c.positions);
         printf(" )\n");
-        printBinarySearchTree(b->droite,prof+1);
         printBinarySearchTree(b->gauche,prof+1);
+        printBinarySearchTree(b->droite,prof+1);
     }
 }

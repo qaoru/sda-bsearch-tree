@@ -31,41 +31,6 @@ void freeBinarySearchTree(bTree* b){
     free(b);
 }
 
-/*
- * Fonction qui ajoute un noued à gauche de l'enfantb
- */
-void addNodeLeft(bTree* b, char* word, ordSet l){
-    bTree* node=initBinarySearchTree();
-    Couple addc;
-    addc.mot=malloc(MAX_WORD_SIZE);
-    if(addc.mot==NULL){
-        error(1, "malloc");
-    }
-    strcpy(addc.mot,word);
-    addc.positions= l;
-    strcpy(node->c.mot,addc.mot);
-    node->c.positions=addc.positions;
-    b->gauche=node;
-    free(addc.mot);
-}
-
-/*
- * Fonction qui ajoute un noeud à droite de l'enfant b
- */
-void addNodeRight(bTree* b, char* word, ordSet l){
-    bTree* node=initBinarySearchTree();
-    Couple addc;
-    addc.mot=malloc(MAX_WORD_SIZE);
-    if(addc.mot==NULL){
-        error(1, "malloc");
-    }
-    strcpy(addc.mot,word);
-    addc.positions=l;
-    strcpy(node->c.mot,addc.mot);
-    node->c.positions=addc.positions;
-    b->droite=node;
-    free(addc.mot);
-}
 
 /*
  * Fonction qui modifie words et count par effet de bord
@@ -144,11 +109,9 @@ void exist(char* mot, bTree *b, int* ex){
 
 void insert(char* mot, int position, bTree** b){
     if((*b)==NULL){
-        bTree* new=initBinarySearchTree();
-        strcpy(new->c.mot,mot);
-        insertValue(&new->c.positions,position);
-        (*b)=new;
-        free(new);
+        (*b)=initBinarySearchTree();
+        strcpy((*b)->c.mot,mot);
+        insertValue(&((*b)->c.positions),position);
     }
     else{
         if(strcmp(mot,(*b)->c.mot)==0){

@@ -142,23 +142,23 @@ void exist(char* mot, bTree *b, int* ex){
     }
 }
 
-void insert(char* mot, int position, bTree* b){
-    if(b==NULL){
+void insert(char* mot, int position, bTree** b){
+    if((*b)==NULL){
         bTree* new=initBinarySearchTree();
         strcpy(new->c.mot,mot);
         insertValue(&new->c.positions,position);
-        b=new;
+        (*b)=new;
         free(new);
     }
     else{
-        if(strcmp(mot,b->c.mot)==0){
-            insertValue(&b->c.positions,position);
+        if(strcmp(mot,(*b)->c.mot)==0){
+            insertValue(&(*b)->c.positions,position);
         }
-        else if(strcmp(mot,b->c.mot)>0){
-            insert(mot,position,b->droite);
+        else if(strcmp(mot,(*b)->c.mot)>0){
+            insert(mot,position,&((*b)->droite));
         }
-        else if(strcmp(mot,b->c.mot)<0){
-            insert(mot,position,b->gauche);
+        else if(strcmp(mot,(*b)->c.mot)<0){
+            insert(mot,position,&((*b)->gauche));
         }
     }
 }

@@ -42,9 +42,9 @@ int main(const int argc, const char* argv[]) {
     // Tests binary_tree
 
     bTree* t1=NULL;
-    insert("foo",1,t1);
-    insert("qux",6,t1);
-    insert("corge",3,t1);
+    insert("foo",1,&t1);
+    insert("qux",6,&t1);
+    insert("corge",3,&t1);
     printBinarySearchTree(t1,1);
     printf("\nTest find:\n");
     printOrderedSet(find("lili",t1));

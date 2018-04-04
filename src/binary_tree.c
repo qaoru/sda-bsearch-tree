@@ -200,8 +200,22 @@ void printBinarySearchTree(bTree *b, int prof){
 }
 
 int isBalanced(bTree* b){
-    (void)b;
-    return 0;
+    if(b!=NULL){
+        if(abs(getHeight(b->droite)-getHeight(b->gauche))<=1){
+            if(isBalanced(b->droite)&&isBalanced(b->gauche)){
+                return 0;
+            }
+            else{
+                return 1;
+            }
+        }
+        else{
+            return 1;
+        }
+    }
+    else{
+        return 0;
+    }
 }
 
 int getHeight(bTree* b){

@@ -45,8 +45,8 @@ int main(const int argc, const char* argv[]) {
     insert("foo",1,&t1);
     insert("foo",2,&t1);
     insert("foo",3,&t1);
-    insert("qux",3,&t1); // <- ici si on intervertit celui et celui d'après on
-    insert("qux",2,&t1); // a pas la même chose
+    insert("qux",2,&t1); // <- ici si on intervertit celui et celui d'après on
+    insert("qux",3,&t1); // a pas la même chose
     insert("corge",3,&t1);
     insert("foo",4,&t1);
 
@@ -57,7 +57,7 @@ int main(const int argc, const char* argv[]) {
     printf("TotalNumberString: %d\n",getTotalNumberString(t1));
 
     /*------Test Coocurrences-----*/
-    char* mots[getNumberString(t1)];
+    char* mots[2];
     int i;
     for(i=0;i<2;i++){
         mots[i]=malloc(50);//50 à mettre en define

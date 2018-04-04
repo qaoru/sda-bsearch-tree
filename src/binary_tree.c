@@ -1,8 +1,5 @@
 #include "binary_tree.h"
 
-/*
- * Fonction qui créé un nouvel arbre binaire
- */
 bTree* initBinarySearchTree(){
     bTree* newt=malloc(sizeof(struct s_bTree));
     if(newt==NULL){
@@ -18,9 +15,6 @@ bTree* initBinarySearchTree(){
     return newt;
 }
 
-/*
- * Focntion qui libère la mémoire allouée à un arbre binaire
- */
 void freeBinarySearchTree(bTree* b){
     if(b==NULL){
         return;
@@ -32,12 +26,6 @@ void freeBinarySearchTree(bTree* b){
     free(b);
 }
 
-
-/*
- * Fonction qui modifie words et count par effet de bord
- * Met dans word, les mots de l'arbre sans répétition
- * Met dans count le nombre de mot différent dans l'arbre
- */
 void getNumberStringAux(bTree *b, char** words, int* count){
     static int i=0;
     int cpt;
@@ -70,7 +58,6 @@ void getNumberStringAux(bTree *b, char** words, int* count){
 }
 
 /*
- * Fonction qui renvoie le nombre de mots différents dans un arbre
  * ATTENTION: pas généralisé pour une chaine de caractère de taille aléatoire
  * (ici 50 caractères au max) et pour un nombre de mots aléatoire (ici TAB_SIZE
  * mots).

@@ -153,7 +153,8 @@ void printBinarySearchTree(bTree *b, int prof);
 
 int isBalanced(bTree* b);
 int getHeight(bTree* b);
-int getAverageDepth(bTree* b);
+int getTotalDepth(bTree* b);
+double getAverageDepth(bTree* b);
 void rotateLeft(bTree* b);
 void rotateRight(bTree* b);
 void rotateRightLeft(bTree* b);

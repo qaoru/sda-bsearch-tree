@@ -74,13 +74,16 @@ int main(const int argc, const char* argv[]) {
         free(mots[i]);
     }
     /*--------------------*/
+    printf("Height t1: %d\n",getHeight(t1));
     printf("Equilibré t1: %d\n",isBalanced(t1));
+    printf("Average Depth t1: %f\n",getAverageDepth(t1));
     freeBinarySearchTree(t1);
 
     bTree *test = generateTree(argv[1]);
     printBinarySearchTree(test,1);
     printf("\nHauteur test: %d.\n",getHeight(test));
     printf("Equilibré test: %d\n",isBalanced(test));
+    printf("Average depth test: %f\n",getAverageDepth(test));
     freeBinarySearchTree(test);
 
 

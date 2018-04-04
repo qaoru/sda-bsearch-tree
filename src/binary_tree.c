@@ -227,9 +227,17 @@ int getHeight(bTree* b){
     return 1+(hg>hd?hg:hd);
 }
 
-int getAverageDepth(bTree* b){
-    (void)b;
-    return 0;
+int getTotalDepth(bTree* b){
+    int som=0;
+    if(b==NULL){
+        return 0;
+    }
+    som=som+getHeight(b)+getTotalDepth(b->droite)+getTotalDepth(b->gauche);
+    return som;
+}
+
+double getAverageDepth(bTree* b){
+    return (double)getTotalDepth(b)/(double)getNumberString(b);
 }
 
 void rotateLeft(bTree* b){

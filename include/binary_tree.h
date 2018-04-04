@@ -149,4 +149,12 @@ ordSet find(char *mot, bTree *b);
  * \param prof la profondeur de départ
  */
 void printBinarySearchTree(bTree *b, int prof);
+
+int isBalanced(bTree* b);
+int getHeight(bTree* b);
+int getAverageDepth(bTree* b);
+void rotateLeft(bTree* b);
+void rotateRight(bTree* b);
+void rotateRightLeft(bTree* b);
+void rotateLeftRight(bTree *b);
 #endif

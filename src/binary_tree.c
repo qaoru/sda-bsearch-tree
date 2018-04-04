@@ -198,3 +198,34 @@ void printBinarySearchTree(bTree *b, int prof){
         printBinarySearchTree(b->droite,prof+1);
     }
 }
+
+int isBalanced(bTree* b){
+    (void)b;
+    return 0;
+}
+
+int getHeight(bTree* b){
+    (void)b;
+    return 0;
+}
+
+int getAverageDepth(bTree* b){
+    (void)b;
+    return 0;
+}
+
+void rotateLeft(bTree* b){
+    (void)b;
+}
+
+void rotateRight(bTree* b){
+    (void)b;
+}
+
+void rotateRightLeft(bTree* b){
+    (void)b;
+}
+
+void rotateLeftRight(bTree *b){
+    (void)b;
+}

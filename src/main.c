@@ -91,5 +91,55 @@ int main(const int argc, const char* argv[]) {
     freeOrderedSet(&s2);
     freeOrderedSet(&s3);
     //(void)generateTree(argv[1]);
+
+    /*********** Test Rotations  ****************/
+    printf("\n\n ===================$$$$$$===================\n\n");
+    printf("       Tests Rotations Gauche et Droite        \n\n");
+    bTree* r=NULL;
+    insert("e",1,&r);
+    insert("f",1,&r);
+    insert("c",1,&r);
+    insert("a",1,&r);
+    insert("d",1,&r);
+    printBinarySearchTree(r,1);
+    r=rotateRight(r);
+    printf("\nRotation droite\n");
+    printBinarySearchTree(r,1);
+    r=rotateLeft(r);
+    printf("\nRotation gauche\n");
+    printBinarySearchTree(r,1);
+    freeBinarySearchTree(r);
+
+    printf("\n\n ===================$$$$$$===================\n\n");
+    printf("     Tests Rotation Double DroiteGauche     \n\n");
+    bTree* rdg=NULL;
+    insert("m",1,&rdg);
+    insert("s",1,&rdg);
+    insert("a",1,&rdg);
+    insert("p",1,&rdg);
+    insert("t",1,&rdg);
+    insert("o",1,&rdg);
+    insert("q",1,&rdg);
+    printBinarySearchTree(rdg,1);
+    rdg=rotateDoubleRightLeft(rdg);
+    printf("\nRotation double DroiteGauche\n");
+    printBinarySearchTree(rdg,1);
+    freeBinarySearchTree(rdg);
+
+    printf("\n\n ===================$$$$$$===================\n\n");
+    printf("     Tests Rotation Double GaucheDroite     \n\n");
+    bTree* rgd=NULL;
+    insert("m",1,&rgd);
+    insert("o",1,&rgd);
+    insert("d",1,&rgd);
+    insert("a",1,&rgd);
+    insert("g",1,&rgd);
+    insert("f",1,&rgd);
+    insert("i",1,&rgd);
+    printBinarySearchTree(rgd,1);
+    rgd=rotateDoubleLeftRight(rgd);
+    printf("\nRotation double GaucheDroite\n");
+    printBinarySearchTree(rgd,1);
+    freeBinarySearchTree(rgd);
     return 0;
 }

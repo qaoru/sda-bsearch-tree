@@ -157,6 +157,6 @@ int getTotalDepth(bTree* b);
 double getAverageDepth(bTree* b);
 bTree* rotateLeft(bTree* b);
 bTree* rotateRight(bTree* b);
-void rotateRightLeft(bTree* b);
-void rotateLeftRight(bTree *b);
+bTree* rotateDoubleRightLeft(bTree* b);
+bTree* rotateDoubleLeftRight(bTree *b);
 #endif

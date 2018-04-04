@@ -264,10 +264,34 @@ bTree* rotateRight(bTree* b){
     }
 }
 
-void rotateRightLeft(bTree* b){
-    (void)b;
+bTree* rotateDoubleRightLeft(bTree* b){
+    if(b!=NULL&&b->droite!=NULL&&b->droite->gauche!=NULL){
+        bTree* new_racine=b->droite->gauche;
+        bTree* beta=b->droite->gauche->gauche;
+        bTree* nu=b->droite->gauche->droite;
+        new_racine->gauche=b;
+        new_racine->droite=b->droite;
+        new_racine->gauche->droite=beta;
+        new_racine->droite->gauche=nu;
+        return new_racine;
+    }
+    else{
+        return NULL;
+    }
 }
 
-void rotateLeftRight(bTree *b){
-    (void)b;
+bTree* rotateDoubleLeftRight(bTree *b){
+    if(b!=NULL&&b->gauche!=NULL&&b->gauche->droite!=NULL){
+        bTree* new_racine=b->gauche->droite;
+        bTree* beta=b->gauche->droite->droite;
+        bTree* nu=b->gauche->droite->gauche;
+        new_racine->droite=b;
+        new_racine->gauche=b->gauche;
+        new_racine->droite->gauche=beta;
+        new_racine->gauche->droite=nu;
+        return new_racine;
+    }
+    else{
+        return NULL;
+    }
 }

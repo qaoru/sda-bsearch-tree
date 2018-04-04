@@ -74,11 +74,11 @@ int main(const int argc, const char* argv[]) {
         free(mots[i]);
     }
     /*--------------------*/
-
     freeBinarySearchTree(t1);
 
     bTree *test = generateTree(argv[1]);
     printBinarySearchTree(test,1);
+    printf("\nHauteur test: %d.\n",getHeight(test));
     freeBinarySearchTree(test);
 
 

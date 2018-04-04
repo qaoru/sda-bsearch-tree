@@ -205,8 +205,12 @@ int isBalanced(bTree* b){
 }
 
 int getHeight(bTree* b){
-    (void)b;
-    return 0;
+    if(b==NULL){
+        return 0;
+    }
+    int hg=getHeight(b->gauche);
+    int hd=getHeight(b->droite);
+    return 1+(hg>hd?hg:hd);
 }
 
 int getAverageDepth(bTree* b){

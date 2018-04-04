@@ -240,12 +240,28 @@ double getAverageDepth(bTree* b){
     return (double)getTotalDepth(b)/(double)getNumberString(b);
 }
 
-void rotateLeft(bTree* b){
-    (void)b;
+bTree* rotateLeft(bTree* b){
+    if((b!=NULL)&&(b->droite!=NULL)){
+        bTree* new_racine=b->droite;
+        b->droite=new_racine->gauche;
+        new_racine->gauche=b;
+        return new_racine;
+    }
+    else{
+        return NULL;
+    }
 }
 
-void rotateRight(bTree* b){
-    (void)b;
+bTree* rotateRight(bTree* b){
+    if((b!=NULL)&&(b->gauche!=NULL)){
+        bTree* new_racine=b->gauche;
+        b->gauche=new_racine->droite;
+        new_racine->droite=b;
+        return new_racine;
+    }
+    else{
+        return NULL;
+    }
 }
 
 void rotateRightLeft(bTree* b){

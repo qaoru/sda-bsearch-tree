@@ -28,8 +28,6 @@ void freeBinarySearchTree(bTree* b){
 
 int getNumberString(bTree *b){
     static int count = 0;
-    //int cpt;
-    //int in=0;
     if(b!=NULL){
         count++;
         getNumberString(b->droite);
@@ -38,18 +36,6 @@ int getNumberString(bTree *b){
 
     return count;
 }
-
-/*
- * ATTENTION: pas généralisé pour une chaine de caractère de taille aléatoire
- * (ici 50 caractères au max) et pour un nombre de mots aléatoire (ici TAB_SIZE
- * mots).
- */
-/*
-int getNumberString(bTree *b){
-    //int count=0;
-    getNumberStringAux(b);
-    return count;
-}*/
 
 void getTotalNumberStringAux(bTree *b, int* count){
     if(b==NULL){

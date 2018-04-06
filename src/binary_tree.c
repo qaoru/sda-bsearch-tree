@@ -100,7 +100,6 @@ bTree* equilibrer(bTree* b){
             b->droite=rotateRight(b->droite);
         }
         return rotateLeft(b);
-
     }
     else{
         return b;

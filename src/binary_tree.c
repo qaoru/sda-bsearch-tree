@@ -87,6 +87,9 @@ void insert(char* mot, int position, bTree** b){
         insertValue(&((*b)->c.positions),position);
     }
     else{
+        if(isBalanced(*b)!=0){
+            (*b)=equilibrer(*b);
+        }
         if(strcmp(mot,(*b)->c.mot)==0){
             insertValue(&(*b)->c.positions,position);
         }
@@ -96,6 +99,25 @@ void insert(char* mot, int position, bTree** b){
         else if(strcmp(mot,(*b)->c.mot)<0){
             insert(mot,position,&((*b)->gauche));
         }
+    }
+}
+
+bTree* equilibrer(bTree* b){
+    if(getHeight(b->gauche)-getHeight(b->droite)==2){
+        if(getHeight(b->gauche->gauche)<getHeight(b->gauche->droite)){
+            b->gauche=rotateLeft(b->gauche);
+        }
+        return rotateRight(b);
+    } //else version symétrique
+    else if(getHeight(b->gauche)-getHeight(b->droite)==-2){
+        if(getHeight(b->droite->droite)<getHeight(b->droite->gauche)){
+            b->droite=rotateRight(b->droite);
+        }
+        return rotateLeft(b);
+
+    }
+    else{
+        return b;
     }
 }
 
@@ -176,7 +198,7 @@ void printBinarySearchTree(bTree *b, int prof){
 int isBalanced(bTree* b){
     if(b!=NULL){
         if(abs(getHeight(b->droite)-getHeight(b->gauche))<=1){
-            if(isBalanced(b->droite)&&isBalanced(b->gauche)){
+            if((isBalanced(b->droite)==0)&&(isBalanced(b->gauche)==0)){
                 return 0;
             }
             else{

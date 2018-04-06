@@ -143,6 +143,7 @@ int isBalanced(bTree* b);
 int getHeight(bTree* b);
 int getTotalDepth(bTree* b);
 double getAverageDepth(bTree* b);
+bTree* equilibrer(bTree* b);
 bTree* rotateLeft(bTree* b);
 bTree* rotateRight(bTree* b);
 bTree* rotateDoubleRightLeft(bTree* b);

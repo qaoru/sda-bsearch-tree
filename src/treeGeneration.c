@@ -30,8 +30,8 @@ bTree* generateTree(const char *path) {
     int i;
     int cpt = 0;
     char tmp[PATH_MAX];
-    if((spec = malloc(BUFFSIZE)) == NULL) {
-        error(1, "malloc");
+    if((spec = calloc(BUFFSIZE, 1)) == NULL) {
+        error(1, "calloc");
     }
     readTree(path, &spec);
     size = strlen(spec);

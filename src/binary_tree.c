@@ -26,35 +26,17 @@ void freeBinarySearchTree(bTree* b){
     free(b);
 }
 
-void getNumberStringAux(bTree *b, char** words, int* count){
-    static int i=0;
-    int cpt;
-    int in=0;
+int getNumberString(bTree *b){
+    static int count = 0;
+    //int cpt;
+    //int in=0;
     if(b!=NULL){
-        if(i==0){
-            strcpy(words[i++],b->c.mot);
-            (*count)++;
-            getNumberStringAux(b->droite,words,count);
-            getNumberStringAux(b->gauche,words,count);
-        }
-        else{
-            for(cpt=0;cpt<i;cpt++){
-                if(strcmp(words[cpt],b->c.mot)==0){
-                    in=1;
-                }
-            }
-            if(in==1){
-                getNumberStringAux(b->droite,words,count);
-                getNumberStringAux(b->gauche,words,count);
-            }
-            else{
-                strcpy(words[i++],b->c.mot);
-                (*count)++;
-                getNumberStringAux(b->droite,words,count);
-                getNumberStringAux(b->gauche,words,count);
-            }
-        }
+        count++;
+        getNumberString(b->droite);
+        getNumberString(b->gauche);
     }
+
+    return count;
 }
 
 /*
@@ -62,20 +44,12 @@ void getNumberStringAux(bTree *b, char** words, int* count){
  * (ici 50 caractères au max) et pour un nombre de mots aléatoire (ici TAB_SIZE
  * mots).
  */
+/*
 int getNumberString(bTree *b){
-    char* words[TAB_SIZE];
-    for(int i=0;i<TAB_SIZE;i++){
-        if((words[i]=malloc(50)) == NULL) {
-            error(1, "malloc");
-        }
-    }
-    int count=0;
-    getNumberStringAux(b,words,&count);
-    for(int i=0;i<TAB_SIZE;i++){
-        free(words[i]);
-    }
+    //int count=0;
+    getNumberStringAux(b);
     return count;
-}
+}*/
 
 void getTotalNumberStringAux(bTree *b, int* count){
     if(b==NULL){
@@ -134,7 +108,7 @@ void findCooccurencesAux(bTree* b, char** mots, int nb_mots, ordSet* indices){
                     (*indices)=b->c.positions;
                 }
                 else{
-                    (*indices)=intersect((*indices),b->c.positions);
+                    (*indices)= intersect((*indices),b->c.positions);
                     if(indices->start==NULL&&indices->last==NULL){
                         exit(0);
                     }

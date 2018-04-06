@@ -55,6 +55,8 @@ int main(const int argc, const char* argv[]) {
     printOrderedSet(find("lili",t1));
     printf("\n");
     printf("TotalNumberString: %d\n",getTotalNumberString(t1));
+    printf("NumberString: %d\n",getNumberString(t1));
+
 
     /*------Test Coocurrences-----*/
     char* mots[2];
@@ -68,7 +70,9 @@ int main(const int argc, const char* argv[]) {
     strcpy(mots[0],"foo");
     strcpy(mots[1],"qux");
     printf("Coocurrences foo qux:\n");
-    printOrderedSet(findCooccurences(t1,mots,2));
+    ordSet cooc = findCooccurences(t1,mots,2);
+    printOrderedSet(cooc);
+    freeOrderedSet(&cooc);
     printf("\n");
     for(i=0;i<2;i++){
         free(mots[i]);

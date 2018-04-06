@@ -44,18 +44,6 @@ bTree* initBinarySearchTree();
 void freeBinarySearchTree(bTree* b);
 
 /**
- * \fn getNumberStringAux(bTree *b, char** words, int* count)
- * \brief Calcul le nombre de mots différents d'un arbre donné en utilisant
- * un tableau de string pour stocker les mots par passage par adresse et un
- * pointeur sur un entier pour stocker le nombre de mots différents par
- * passage par adresse également.
- * \param b un pointeur sur un arbre
- * \param words un tableau de string
- * \param count un pointeur sur un entier
- */
-void getNumberStringAux(bTree *b, char** words, int* count);
-
-/**
  * \fn getNumberString(bTree *b)
  * \brief Calcul le nombre de mot différents contenu dans un arbre donné.
  * \param b un pointeur sur un bTree

@@ -283,7 +283,7 @@ bTree* rotateDoubleRightLeft(bTree* b){
 bTree* rotateDoubleLeftRight(bTree *b){
     if(b!=NULL&&b->gauche!=NULL&&b->gauche->droite!=NULL){
         bTree* new_racine=b->gauche->droite;
-        bTree* beta=b->gauche->droite->droite;
+        bTree* beta=b->gauchecl->droite->droite;
         bTree* nu=b->gauche->droite->gauche;
         new_racine->droite=b;
         new_racine->gauche=b->gauche;

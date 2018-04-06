@@ -9,7 +9,7 @@
 
 /**
  * \struct str_set
- * \brief Elément d'un ensemble ordonné d'entiers
+ * \brief Elément d'un ensemble ordonné 'entiers
  *
  * Contient un entier et un pointeur vers l'élément suivant,
  * à la manière d'une liste chainée
@@ -57,7 +57,7 @@ void printNbElt(ordSet c);
 /**
  * \fn contains(ordSet c, int x)
  * \brief Teste si c contient x
- * \param c un ensemble ordonné 
+ * \param c un ensemble ordonné
  * \param x un entier
  * \return un booléen
  */

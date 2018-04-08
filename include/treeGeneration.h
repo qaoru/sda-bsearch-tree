@@ -8,7 +8,7 @@
 
 #define BUFFSIZE 4096
 /**
- * \fn void readTree(const char * path, char **str)
+ * \fn int readTree(const char * path, char **str)
  * \brief ouvre un fichier, place son contenu dans
  * une chaîne de caractères puis le ferme
  * \param path le chemin du fichier (char *)

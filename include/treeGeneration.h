@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <limits.h>
+#include <ctype.h>
 #include "binary_tree.h"
 
 #define BUFFSIZE 4096
@@ -12,8 +13,10 @@
  * une chaîne de caractères puis le ferme
  * \param path le chemin du fichier (char *)
  * \param str l'adresse la chaîne destination
+ * \return la taille de la chaine destination
+ * caractère de fin de chaîne inclus
  */
-void readTree(const char * path, char **str);
+int readTree(const char * path, char **str);
 
 /**
  * \fn bTree* generateTree(const char *path)

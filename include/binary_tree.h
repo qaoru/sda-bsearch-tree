@@ -25,6 +25,7 @@ typedef struct {
  */
 typedef struct s_bTree{
     Couple c;
+    int profondeur;
     struct s_bTree* droite;
     struct s_bTree* gauche;
 } bTree;

@@ -91,15 +91,19 @@ void insert(char* mot, int position, bTree** b){
 bTree* equilibrer(bTree* b){
     if(getHeight(b->gauche)-getHeight(b->droite)==2){
         if(getHeight(b->gauche->gauche)<getHeight(b->gauche->droite)){
-            b->gauche=rotateLeft(b->gauche);
+            return rotateDoubleLeftRight(b);
         }
-        return rotateRight(b);
+        else{
+            return rotateRight(b);
+        }
     } //else version symétrique
     else if(getHeight(b->gauche)-getHeight(b->droite)==-2){
         if(getHeight(b->droite->droite)<getHeight(b->droite->gauche)){
-            b->droite=rotateRight(b->droite);
+            return rotateDoubleRightLeft(b);
         }
-        return rotateLeft(b);
+        else{
+            return rotateLeft(b);
+        }
     }
     else{
         return b;
@@ -246,15 +250,9 @@ bTree* rotateRight(bTree* b){
 }
 
 bTree* rotateDoubleRightLeft(bTree* b){
-    if(b!=NULL&&b->droite!=NULL&&b->droite->gauche!=NULL){
-        bTree* new_racine=b->droite->gauche;
-        bTree* beta=b->droite->gauche->gauche;
-        bTree* nu=b->droite->gauche->droite;
-        new_racine->gauche=b;
-        new_racine->droite=b->droite;
-        new_racine->gauche->droite=beta;
-        new_racine->droite->gauche=nu;
-        return new_racine;
+    if(b!=NULL&&b->droite!=NULL){
+        b->droite=rotateRight(b->droite);
+        return rotateLeft(b);
     }
     else{
         return NULL;
@@ -262,15 +260,9 @@ bTree* rotateDoubleRightLeft(bTree* b){
 }
 
 bTree* rotateDoubleLeftRight(bTree *b){
-    if(b!=NULL&&b->gauche!=NULL&&b->gauche->droite!=NULL){
-        bTree* new_racine=b->gauche->droite;
-        bTree* beta=b->gauche->droite->droite;
-        bTree* nu=b->gauche->droite->gauche;
-        new_racine->droite=b;
-        new_racine->gauche=b->gauche;
-        new_racine->droite->gauche=beta;
-        new_racine->gauche->droite=nu;
-        return new_racine;
+    if(b!=NULL&&b->gauche!=NULL){
+        b->gauche=rotateLeft(b->gauche);
+        return rotateRight(b);
     }
     else{
         return NULL;

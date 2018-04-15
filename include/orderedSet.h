@@ -29,6 +29,7 @@ typedef struct str_set {
 typedef struct str_ordSet {
     ordSetElt * start;
     ordSetElt * last;
+    int size;
 } ordSet;
 
 

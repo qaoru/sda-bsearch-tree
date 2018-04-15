@@ -35,6 +35,7 @@ int main(const int argc, const char* argv[]) {
     printf("\ns2 : \n");
     printOrderedSet(s2);
     printf("\n");
+    printf("Taille s2 = %d\n", getNumberElt(s2));
 
     /******************************/
     printf("\n\n ===================$$$$$$===================\n\n");

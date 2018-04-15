@@ -4,6 +4,7 @@ ordSet initOrderedSet() {
     ordSet res;
     res.start = NULL;
     res.last = NULL;
+    res.size = 0;
     return res;
 }
 
@@ -17,13 +18,16 @@ void freeOrderedSet(ordSet *s) {
 }
 
 int getNumberElt(ordSet c) {
-     ordSetElt *s = c.start;
+    /*
+    ordSetElt *s = c.start;
     int cnt = 0;
     while(s != NULL) {
         cnt++;
         s = s->next;
     }
     return cnt;
+    */
+   return c.size;
 }
 
 void printNbElt(ordSet c) {
@@ -81,7 +85,7 @@ ordSetElt *getInsertPosition(ordSetElt *s, int x) {
 }
 
 void insertValue(ordSet *s, int x) {
-    ordSetElt *before;
+    ordSetElt *before = NULL;
     if(s->start != NULL) {
         before = getInsertPosition(s->start, x);
         if(before == NULL) {    //s contient déjà x
@@ -92,6 +96,7 @@ void insertValue(ordSet *s, int x) {
     if((newElt = malloc(sizeof(struct str_set))) == NULL) {
         error(1, "oh snap ! cannot malloc ...");
     }
+    s->size++;
     newElt->pos = x;
 
     // Cas : s est vide

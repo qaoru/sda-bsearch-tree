@@ -134,19 +134,81 @@ ordSet find(char *mot, bTree *b);
 
 /**
  * \fn printBinarySearchTree(bTree *b, int prof)
- * \brief Affiche un arbre donné
+ * \brief Affiche un arbre donné.
  * \param b un pointeur sur un bTree
  * \param prof la profondeur de départ
  */
 void printBinarySearchTree(bTree *b, int prof);
 
+/**
+ * \fn isBalanced(bTree *b)
+ * \brief Test si un arbre donné est équilibré ou non.
+ * \param b un pointeur sur un bTree
+ * \return 0:vrai, 1:faux
+ */
 int isBalanced(bTree* b);
+
+/**
+ * \fn getHeight(bTree *b)
+ * \brief Calcul la hauteur d'un arbre donné.
+ * \param b un pointeur sur un bTree
+ * \return la hauteur
+ */
 int getHeight(bTree* b);
+
+/**
+ * \fn getTotalDepth(bTree *b)
+ * \brief Calcul la profondeur totale d'un arbre donné.
+ * \param b un pointeur sur un bTree
+ * \return la profondeur totale de l'arbre
+ */
 int getTotalDepth(bTree* b);
+
+/**
+ * \fn getAverageDepth(bTree *b)
+ * \brief Calcul la profondeur moyenne d'un arbre donné.
+ * \param b un pointeur sur un bTree
+ * \return la profondeur moyenne
+ */
 double getAverageDepth(bTree* b);
+
+/**
+ * \fn equilibrer(bTree *b)
+ * \brief Equilibre un arbre donné.
+ * \param b un pointeur sur un bTree
+ * \return un nouvel arbre équilibré
+ */
 bTree* equilibrer(bTree* b);
+
+/**
+ * \fn rotateLeft(bTree *b)
+ * \brief Effectue une rotation gauche d'un arbre donné.
+ * \param b un pointeur sur un bTree
+ * \return un nouvel arbre
+ */
 bTree* rotateLeft(bTree* b);
+
+/**
+ * \fn rotateRight(bTree *b)
+ * \brief Effectue une rotation droite d'un arbre donné.
+ * \param b un pointeur sur un bTree
+ * \return un nouvel arbre
+ */
 bTree* rotateRight(bTree* b);
+
+/**
+ * \fn rotateDoubleRightLeft(bTree *b)
+ * \brief Effectue une rotation double droite-gauche d'un arbre donné.
+ * \param b un pointeur sur un bTree
+ * \return un nouvel arbre
+ */
 bTree* rotateDoubleRightLeft(bTree* b);
+
+/**
+ * \fn rotateDoubleLeftRight(bTree *b)
+ * \brief Effectue une rotation double gauche-droite d'un arbre donné.
+ * \param b un pointeur sur un bTree
+ * \return un nouvel arbre
+ */
 bTree* rotateDoubleLeftRight(bTree *b);
 #endif

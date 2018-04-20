@@ -149,7 +149,7 @@ int isBalanced(bTree* b);
 
 /**
  * \fn getHeight(bTree *b)
- * \brief Calcul la hauteur d'un arbre donné.
+ * \brief Calcul la profondeur d'un arbre donné.
  * \param b un pointeur sur un bTree
  * \return la hauteur
  */

@@ -25,7 +25,6 @@ typedef struct {
  */
 typedef struct s_bTree{
     Couple c;
-    int profondeur;
     struct s_bTree* droite;
     struct s_bTree* gauche;
 } bTree;
@@ -158,7 +157,7 @@ int getHeight(bTree* b);
 
 /**
  * \fn getTotalDepth(bTree *b)
- * \brief Calcul la profondeur totale d'un arbre donné.
+ * \brief Calcul la somme des profondeurs de tous les noeuds d'un arbre donné.
  * \param b un pointeur sur un bTree
  * \return la profondeur totale de l'arbre
  */

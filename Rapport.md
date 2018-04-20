@@ -12,7 +12,7 @@ date: Mai 2018
 
 Notre ensemble de données est constitué de 2 parties. A la manière d'une liste chaînée, nous utilisons un système de maillons contenant un élément (ici un entier) et un pointeur vers l'élément suivant. Après réflexion, nous avons également choisi d'utiliser un couple de pointeurs : l'un vers le début de l'ensemble, et l'autre vers sa fin. Ce choix a été motivé par la nécessité d'optimiser la complexité de certaines opérations. En effet, avoir un accès direct au dernier élément permet d'éviter de faire un parcours entier de l'ensemble quand on souahite effectuer une insertion à la fin de l'ensemble, et cela permet également de faire des tests préliminaires en cas d'intersection nulle entre 2 ensembles.
 
-## La fonction intersection
+## La fonction _intersection_
 
 L'implémentation de cette fonction commence par des tests préliminaires, retournant immédiatement un ensemble vide si une des conditions suivantes est remplie :
 
@@ -25,7 +25,7 @@ Si aucune des conditions n'est vérifiée, on effectue le parcous simultané des
 * si $e_1 > e_2$, on passe à l'élément suivant pour le second ensemble
 * si $e_1 = e_2$, on ajoute cet élément à l'ensemble de retour de la fonction, et on passe à l'élément suivant pour les deux ensembles
 
-L'intération s'arrête quand on arrive à la fin d'un des deux ensembles.
+L'itération s'arrête quand on arrive à la fin d'un des deux ensembles.
 
 ## Pire cas et complexité
 
@@ -52,3 +52,35 @@ Le pire cas possible est que les deux ensembles soient de même taille et qu'une
 
 
 La complexité est en $\theta(m)$
+
+# Arbre binaire de recherche
+
+## Implémentation
+
+Notre structure d'arbre est en deux parties. La première partie est une structure contenant une chaine de caractère et un pointeur sur un ensemble ordonné. La seconde partie, qui est la partie principale, est une structure composée d'un élément de la première structure ainsi que de deux pointeurs sur la seconde structure, l'un pour l'arbre droit, l'autre pour l'arbre gauche.
+
+## La fonction _getAverageDepth_
+
+La fonction _getAverageDepth_ utilise une fonction auxiliaire appelée _getTotalDepth._
+Elle utilise le résultat de cette fonction auquel elle divise le résultat de la fonction _getNumberString_ qui renvoie le nombre de mots différents et donc le nombre de noeuds dans un arbre.
+
+### La fonction _getTotalDepth_
+
+La fonction _getTotalDepth_ calcule la somme des profondeurs de tous les noeuds d'un arbre.
+Elle prend donc pour argument un pointeur sur un arbre.
+
+Cette fonction est récursive.
+
+* Si le pointeur sur l'arbre est nulle, on retourne 0. C'est la condition d'arrêt.
+* Sinon, on calcule la prondeur de l'arbre grâce à la fonction _getHeight_ à laquelle on ajoute le rappel de la fonction _getTotalDepth_ avec l'arbre droit et l'arbre gauche.
+
+## La fonction _isBalanced_
+
+La fonction _isBalanced_ détermine si un arbre donné est équilibré ou non. Elle prend pour argument un pointeur sur un arbre.
+
+* Si le pointeur sur l'arbre est nulle, on retourne 0, c'est à dire vrai.
+* Sinon:
+    - Si la différence de profondeur en valeur absolue de l'arbre droit et l'arbre gauche est plus petite que 1 et que l'arbre droit aisni que l'arbre gauche sont équilibé, on retourne 0.
+    - Sinon, on retourne 1, c'est à dire faux.
+
+## Complexité de la fonction _FindCooccurences_

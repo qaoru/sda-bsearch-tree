@@ -61,8 +61,8 @@ Notre structure d'arbre est en deux parties. La première partie est une structu
 
 ## La fonction _getAverageDepth_
 
-La fonction _getAverageDepth_ utilise une fonction auxiliaire appelée _getTotalDepth_ .
-Elle utilise le résultat de cette fonction auquel elle divise le résultat de la fonction _getNumberString_ qui renvoie le nombre de mots différents et donc le nombre de noeuds dans un arbre afin de renvoyer la hauteur moyenne d'un noeud de l'arbre.
+La fonction _getAverageDepth_ utilise une fonction auxiliaire appelée _getTotalDepth_.
+Elle utilise le résultat de cette fonction auquel elle divise le résultat de la fonction _getNumberString_ qui renvoie le nombre de mots différents (le nombre de noeuds dans un arbre), afin de renvoyer la hauteur moyenne d'un noeud de l'arbre.
 
 ### La fonction _getTotalDepth_
 
@@ -87,12 +87,12 @@ La fonction _isBalanced_ détermine si un arbre donné est équilibré 1ou non. 
 
 ### Comparaison de la hauteur moyenne d'un noeud entre un arbre non équilibré et un arbre équilibré
 
- La hauteur moyenne d'un noeud d'un arbre non équilibré est supérieure à celle d'un arbre équilibré contenant le même nombre de noeud. En effet, avec l'exemple du sujet, en ayant l'arbre équilibré, on obtient une hauteur moyenne de 0,846154. En revanche, si il n'est pas équilibré, la hauteur moyenne est 1,230769.
+ La hauteur moyenne d'un noeud d'un arbre non équilibré est supérieure à celle d'un arbre équilibré contenant le même nombre de noeud. En effet, avec l'exemple du sujet, en ayant l'arbre équilibré, on obtient une hauteur moyenne de 0,523810. En revanche, si il n'est pas équilibré, la hauteur moyenne est 0,761905.
 
 ### Complexité dans le pire des cas pour la fonction _FindCooccurences_ pour un arbre non équilibré
 
 En supposant qu'on recherche deux mots dans un arbre binaire de recherche non équilibré contenant n mots et qu'un mot apparaît au plus dans k phrases différentes, il faudra boucler sur les deux mots qu'on recherche. De plus, dans le pire des cas, ces mots vont apparaître en même temps dans k différentes phrases. Il faudra donc appeler la fonction _intersect_ à k reprises. En supposant que ces k phrases contiennent l'ensemble des mots de l'arbre, la complexité de _intersect_ est dans le pire des cas en $\theta(n*n)$. Ces calculs sont effectués par la fonction _FindCooccurencesAux_. Cette fonction est récursive et elle est appelée n fois.
-La fonction _FindCooccurences_ effectue une boucle sur les mots recherchés pour savoir s'ils existent. La fonction _exist_ parcours dans le pire des cas tout l'arbre donc sa complexité est en $\theta(n)$. _FindCooccurences_ appelle ensuite _FindCooccurencesAux_.
+La fonction _FindCooccurences_ effectue une boucle sur les mots recherchés pour savoir s'ils existent. La fonction _exist_ parcourt dans le pire des cas tout l'arbre donc sa complexité est en $\theta(n)$. _FindCooccurences_ appelle ensuite _FindCooccurencesAux_.
 On a donc une complexité qui est en:
  $\theta(k*n*n*n+n)$ soit $\theta(k*n^3+n)$
 

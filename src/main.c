@@ -21,21 +21,26 @@ int main(const int argc, const char* argv[]) {
     insertValue(&s1, 2);
     insertValue(&s1, 7);
     insertValue(&s1, 5);
+    printf("\ns1 : \n");
+    printOrderedSet(s1);
+    printf("\n");
+    printf("Taille s1 = %d\n", getNumberElt(s1));
 
     ordSet s2 = initOrderedSet();
     insertValue(&s2, 1);
     insertValue(&s2, 2);
     insertValue(&s2, 5);
     insertValue(&s2, 7);
-
-    ordSet s3 = intersect(s1, s2);
-    printOrderedSet(s3);
-    printf("\ns1 : \n");
-    printOrderedSet(s1);
     printf("\ns2 : \n");
     printOrderedSet(s2);
     printf("\n");
     printf("Taille s2 = %d\n", getNumberElt(s2));
+
+    ordSet s3 = intersect(s1, s2);
+    printf("\ns3 (intersection) : \n");
+    printOrderedSet(s3);
+    printf("\n");
+    printf("Taille s3 = %d\n", getNumberElt(s3));
 
     /******************************/
     printf("\n\n ===================$$$$$$===================\n\n");

@@ -73,9 +73,6 @@ void insert(char* mot, int position, bTree** b){
         insertValue(&((*b)->c.positions),position);
     }
     else{
-        if(isBalanced(*b)!=0){
-            (*b)=equilibrer(*b);
-        }
         if(strcmp(mot,(*b)->c.mot)==0){
             insertValue(&(*b)->c.positions,position);
         }
@@ -84,6 +81,9 @@ void insert(char* mot, int position, bTree** b){
         }
         else if(strcmp(mot,(*b)->c.mot)<0){
             insert(mot,position,&((*b)->gauche));
+        }
+        if(isBalanced(*b)!=0){
+            (*b)=equilibrer(*b);
         }
     }
 }

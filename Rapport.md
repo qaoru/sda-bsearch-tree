@@ -61,8 +61,8 @@ Notre structure d'arbre est en deux parties. La première partie est une structu
 
 ## La fonction _getAverageDepth_
 
-La fonction _getAverageDepth_ utilise une fonction auxiliaire appelée _getTotalDepth._
-Elle utilise le résultat de cette fonction auquel elle divise le résultat de la fonction _getNumberString_ qui renvoie le nombre de mots différents et donc le nombre de noeuds dans un arbre.
+La fonction _getAverageDepth_ utilise une fonction auxiliaire appelée _getTotalDepth_ .
+Elle utilise le résultat de cette fonction auquel elle divise le résultat de la fonction _getNumberString_ qui renvoie le nombre de mots différents et donc le nombre de noeuds dans un arbre afin de renvoyer la hauteur moyenne d'un noeud de l'arbre.
 
 ### La fonction _getTotalDepth_
 
@@ -72,15 +72,27 @@ Elle prend donc pour argument un pointeur sur un arbre.
 Cette fonction est récursive.
 
 * Si le pointeur sur l'arbre est nulle, on retourne 0. C'est la condition d'arrêt.
-* Sinon, on calcule la prondeur de l'arbre grâce à la fonction _getHeight_ à laquelle on ajoute le rappel de la fonction _getTotalDepth_ avec l'arbre droit et l'arbre gauche.
+* Sinon, on calcule la prondeur de l'arbre grâce à la fonction _getHeight_ à laquelle on ajoute l'appel de la fonction _getTotalDepth_ avec l'arbre droit puis avec l'arbre gauche.
 
 ## La fonction _isBalanced_
 
 La fonction _isBalanced_ détermine si un arbre donné est équilibré ou non. Elle prend pour argument un pointeur sur un arbre.
 
-* Si le pointeur sur l'arbre est nulle, on retourne 0, c'est à dire vrai.
+* Si le pointeur sur l'arbre est nul, on retourne 0, c'est à dire vrai.
 * Sinon:
-    - Si la différence de profondeur en valeur absolue de l'arbre droit et l'arbre gauche est plus petite que 1 et que l'arbre droit aisni que l'arbre gauche sont équilibé, on retourne 0.
+    - Si la différence de profondeur(en valeur absolue) de l'arbre droit et l'arbre gauche est plus petite que 1 et que l'arbre droit ainsi que l'arbre gauche sont équilibés, on retourne 0.
     - Sinon, on retourne 1, c'est à dire faux.
 
 ## Complexité de la fonction _FindCooccurences_
+
+### Comparaison de la hauteur moyenne d'un noeud entre un arbre non équilibré et un arbre équilibré
+ La hauteur moyenne d'un noeud d'un arbre non équilibré est supérieure à celle d'un arbre équilibré contenant le même nombre de noeud. En effet, avec l'exemple du sujet, en ayant l'arbre équilibré, on obtient une hauteur moyenne de 0,846154. En revanche, si il n'est pas équilibré, la hauteur moyenne est 1,230769.
+
+### Complexité dans le pire des cas pour la fonction _FindCooccurences_ pour un arbre non équilibré
+En supposant qu'on recherche deux mots dans un arbre binaire de recherche non équilibré contenant n mots et qu'un mot apparait au plus dans k phrases différentes, il faudra boucler sur les deux mots qu'on recherche. De plus, dans le pire des cas, ces mots vont apparaitre en même temps dans k différentes phrases. Il faudra donc appeler la fonction _intersect_ à k reprises. En supposant que ces k phrases contiennent l'ensemble des mots de l'arbre, la complexité de _intersect_ est dans le pire des cas en $\theta(n*n)$. Ces calculs sont effectués par la fonction _FindCooccurencesAux_. Cette fonction est récursive et elle est appelée n fois.
+La fonction _FindCooccurences_ effectue une boucle sur les mots recherchés pour savoir s'ils existent. La fonction _exist_ parcourt dans le pire des cas tout l'arbre donc sa compexité est en $\theta(n)$. _FindCooccurences_ appelle ensuite _FindCooccurencesAux_.
+On a donc une complexité qui est en:
+ $\theta(k*n*n*n+n)$ soit $\theta(k*n^3+n)$
+
+### Complexité de la fonction _FindCooccurences_ pour un arbre équilibré
+Dans le pire des cas, l'équilibrage de l'arbre ne change pas la complexité. En effet, dans ce cas, il est toujours nécessaire de parcourir l'ensemble des noeuds de l'arbre. En revanche, en général(pire des cas exclus), la fonction sera plus rapide car l'apparition des mots se fera potentiellement plus rapidement vu que la hauteur moyenne des noeuds est plus faible que celle de l'arbre non équilibré.

@@ -18,15 +18,6 @@ void freeOrderedSet(ordSet *s) {
 }
 
 int getNumberElt(ordSet c) {
-    /*
-    ordSetElt *s = c.start;
-    int cnt = 0;
-    while(s != NULL) {
-        cnt++;
-        s = s->next;
-    }
-    return cnt;
-    */
    return c.size;
 }
 
